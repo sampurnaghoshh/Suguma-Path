@@ -1,8 +1,35 @@
-/* ===================================================================
+/* ═══════════════════════════════════════════════════════════════════
    css/lesson.css — Individual lesson page
-   =================================================================== */
+   Dark cinematic aesthetic · 3D flashcards preserved exactly
+   ═══════════════════════════════════════════════════════════════════ */
 
-/* ── Narrow content container ───────────────────────────────────── */
+/* ── Local semantic tokens (success/warning not in design-tokens) ── */
+:root,
+[data-theme="dark"] {
+  --ll-success:      #4ade80;
+  --ll-success-tint: rgba(74, 222, 128, 0.1);
+  --ll-warning:      #fb923c;
+  --ll-warning-tint: rgba(251, 146, 60, 0.1);
+  --ll-primary-tint: rgba(176, 204, 203, 0.08);
+}
+
+[data-theme="light"] {
+  --ll-success:      #16a34a;
+  --ll-success-tint: rgba(22, 163, 74, 0.08);
+  --ll-warning:      #c2410c;
+  --ll-warning-tint: rgba(194, 65, 12, 0.08);
+  --ll-primary-tint: rgba(61, 107, 90, 0.06);
+}
+
+[data-theme="hc"] {
+  --ll-success:      #00ff00;
+  --ll-success-tint: rgba(0, 255, 0, 0.15);
+  --ll-warning:      #ff8800;
+  --ll-warning-tint: rgba(255, 136, 0, 0.15);
+  --ll-primary-tint: rgba(255, 255, 0, 0.1);
+}
+
+/* ── Narrow container ────────────────────────────────────────────── */
 .container--narrow {
   width: 100%;
   max-width: 640px;
@@ -14,20 +41,105 @@
   .container--narrow { padding-inline: var(--sp-5); }
 }
 
-/* ── Sticky lesson header ───────────────────────────────────────── */
+/* ── Progress bar base ───────────────────────────────────────────── */
+.progress-bar {
+  height: 3px;
+  background: var(--color-border);
+  overflow: hidden;
+}
+
+.progress-bar__fill {
+  height: 100%;
+  background: var(--color-secondary);
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Site nav ────────────────────────────────────────────────────── */
+.lesson-sitenav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-nav);
+  border-bottom: 1px solid var(--glass-border);
+  border-radius: 0;
+}
+
+.lesson-sitenav__inner {
+  display: flex;
+  align-items: center;
+  height: var(--nav-height);
+  gap: var(--sp-6);
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.lesson-sitenav__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.lesson-sitenav__brand {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+.lesson-sitenav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  flex: 1;
+}
+
+.lesson-sitenav__link {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--radius-md);
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.lesson-sitenav__link:hover {
+  color: var(--color-text);
+  background: var(--glass-border);
+}
+
+.lesson-sitenav__link--active { color: var(--color-primary); }
+
+.lesson-sitenav__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-left: auto;
+}
+
+.lesson-sitenav__hamburger { display: none; }
+
+/* ── Lesson main ─────────────────────────────────────────────────── */
+.lesson-main {
+  padding-top: var(--nav-height);
+  min-height: 100vh;
+}
+
+/* ── Sticky lesson header ────────────────────────────────────────── */
 .lesson-header {
   position: sticky;
   top: var(--nav-height);
-  z-index: 50;
-  background: rgba(250, 250, 247, 0.96);
-  backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
-  border-bottom: 1px solid var(--color-border);
+  z-index: var(--z-sticky);
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-bottom: 1px solid var(--glass-border);
   padding: var(--sp-3) 0 0;
-}
-
-.theme-dark .lesson-header {
-  background: rgba(22, 22, 19, 0.96);
 }
 
 .lesson-header__inner {
@@ -79,17 +191,18 @@
 .lesson-header__bar {
   height: 3px;
   border-radius: 0;
-  background: var(--color-border);
+  background: var(--glass-border);
 }
 
 .lesson-header__bar .progress-bar__fill {
+  background: var(--color-secondary);
   transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ── Stage (card area) ──────────────────────────────────────────── */
+/* ── Stage (card area) ───────────────────────────────────────────── */
 .lesson-stage {
   padding: var(--sp-10) 0 var(--sp-8);
-  min-height: calc(100vh - var(--nav-height) - 57px - 72px);  /* header + action bar */
+  min-height: calc(100vh - var(--nav-height) - 57px - 72px);
   display: flex;
   align-items: flex-start;
 }
@@ -102,7 +215,11 @@
   width: 100%;
 }
 
-/* ── Flashcard 3D flip ──────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════
+   FLASHCARD 3D FLIP
+   Core 3D mechanics preserved exactly — only colors updated
+   ═══════════════════════════════════════════════════════════════════ */
+
 .flashcard {
   width: 100%;
   min-height: 360px;
@@ -116,9 +233,9 @@
 }
 
 .flashcard:focus-visible {
-  outline: 3px solid var(--color-border-focus);
+  outline: 3px solid var(--color-primary);
   outline-offset: 4px;
-  border-radius: var(--border-radius-lg);
+  border-radius: var(--radius-lg);
 }
 
 .flashcard__inner {
@@ -127,7 +244,7 @@
   min-height: 360px;
   transform-style: preserve-3d;
   transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: var(--border-radius-xl);
+  border-radius: var(--radius-xl);
 }
 
 .flashcard__inner.is-flipped {
@@ -143,44 +260,44 @@
   inset: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  border-radius: var(--border-radius-xl);
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--glass-border);
+  background: var(--bg-surface);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: var(--sp-4);
   padding: var(--sp-10) var(--sp-8);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
   overflow: hidden;
 }
 
 .flashcard__face--back {
   transform: rotateY(180deg);
-  background: var(--color-surface-alt);
+  background: var(--bg-surface-raised);
   justify-content: flex-start;
   padding-top: var(--sp-8);
 }
 
 /* Known / learning tints */
 .flashcard--known .flashcard__face--front {
-  border-color: rgba(46, 107, 74, 0.3);
-  background: rgba(46, 107, 74, 0.04);
+  border-color: rgba(74, 222, 128, 0.25);
+  background: rgba(74, 222, 128, 0.04);
 }
 
 .flashcard--learning .flashcard__face--front {
-  border-color: rgba(163, 98, 34, 0.3);
-  background: rgba(163, 98, 34, 0.04);
+  border-color: rgba(251, 146, 60, 0.25);
+  background: rgba(251, 146, 60, 0.04);
 }
 
-/* ── Flashcard front content ────────────────────────────────────── */
+/* ── Flashcard front ─────────────────────────────────────────────── */
 .flashcard__hint {
   font-size: var(--text-xs);
   font-weight: 500;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: var(--color-text-placeholder);
+  color: var(--color-text-subtle);
   position: absolute;
   top: var(--sp-5);
   right: var(--sp-6);
@@ -212,25 +329,24 @@
   font-size: var(--text-xs);
   font-weight: 600;
   padding: 2px var(--sp-3);
-  border-radius: var(--border-radius-sm);
+  border-radius: var(--radius-sm);
 }
 
 .flashcard__status--known {
-  background: var(--color-success-light);
-  color: var(--color-success);
+  background: var(--ll-success-tint);
+  color: var(--ll-success);
 }
 
 .flashcard__status--learning {
-  background: var(--color-warning-light);
-  color: var(--color-warning);
+  background: var(--ll-warning-tint);
+  color: var(--ll-warning);
 }
 
-/* ── Flashcard back content ─────────────────────────────────────── */
+/* ── Flashcard back ──────────────────────────────────────────────── */
 .flashcard__english {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
   font-weight: 600;
-  font-variation-settings: 'opsz' 28;
   color: var(--color-text);
   line-height: 1.25;
   width: 100%;
@@ -246,9 +362,9 @@
 .flashcard__scenario {
   width: 100%;
   padding: var(--sp-4);
-  background: var(--color-primary-light);
+  background: var(--ll-primary-tint);
   border-left: 3px solid var(--color-primary);
-  border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   font-size: var(--text-sm);
   color: var(--color-text-muted);
   line-height: 1.6;
@@ -264,37 +380,36 @@
   margin-bottom: var(--sp-1);
 }
 
-/* ── Flip hint below card ───────────────────────────────────────── */
+/* ── Flip hint below card ────────────────────────────────────────── */
 .lesson-flip-hint {
   text-align: center;
   font-size: var(--text-xs);
-  color: var(--color-text-placeholder);
+  color: var(--color-text-subtle);
   margin-top: var(--sp-5);
-  max-width: none;
 }
 
 .lesson-flip-hint kbd {
   display: inline-block;
   padding: 1px 6px;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--glass-border);
   border-radius: 3px;
   font-family: var(--font-mono);
   font-size: 0.65rem;
   color: var(--color-text-muted);
-  background: var(--color-surface);
+  background: var(--glass-bg);
 }
 
-/* ── Alphabet card ──────────────────────────────────────────────── */
+/* ── Alphabet card ───────────────────────────────────────────────── */
 .alphabet-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-xl);
+  background: var(--bg-surface);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
   padding: var(--sp-10) var(--sp-8);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--sp-6);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
 }
 
 .alphabet-card__glyph-btn {
@@ -302,7 +417,7 @@
   border: none;
   cursor: pointer;
   padding: var(--sp-6);
-  border-radius: var(--border-radius-xl);
+  border-radius: var(--radius-xl);
   transition:
     background-color var(--transition-fast),
     transform var(--transition-fast);
@@ -310,15 +425,16 @@
   flex-direction: column;
   align-items: center;
   gap: var(--sp-3);
+  color: inherit;
 }
 
 .alphabet-card__glyph-btn:hover {
-  background: var(--color-primary-light);
+  background: var(--ll-primary-tint);
   transform: scale(1.04);
 }
 
 .alphabet-card__glyph-btn:focus-visible {
-  outline: 3px solid var(--color-border-focus);
+  outline: 3px solid var(--color-primary);
   outline-offset: 4px;
 }
 
@@ -333,7 +449,7 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-weight: 600;
-  color: var(--color-text-placeholder);
+  color: var(--color-text-subtle);
 }
 
 .alphabet-card__details {
@@ -361,8 +477,8 @@
   flex-wrap: wrap;
   justify-content: center;
   padding: var(--sp-4) var(--sp-5);
-  background: var(--color-bg-alt);
-  border-radius: var(--border-radius-md);
+  background: var(--bg-surface-raised);
+  border-radius: var(--radius-md);
   width: 100%;
 }
 
@@ -372,7 +488,7 @@
   cursor: pointer;
   color: var(--color-primary);
   padding: var(--sp-1);
-  border-radius: var(--border-radius-sm);
+  border-radius: var(--radius-sm);
   flex-shrink: 0;
   transition: opacity var(--transition-fast);
 }
@@ -392,23 +508,19 @@
 
 .alphabet-card__example-meaning {
   font-size: var(--text-sm);
-  color: var(--color-text-placeholder);
+  color: var(--color-text-subtle);
 }
 
-/* ── Sticky action bar ──────────────────────────────────────────── */
+/* ── Sticky action bar ───────────────────────────────────────────── */
 .lesson-actions {
   position: sticky;
   bottom: 0;
-  z-index: 50;
-  background: rgba(250, 250, 247, 0.96);
-  backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
-  border-top: 1px solid var(--color-border);
+  z-index: var(--z-sticky);
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-top: 1px solid var(--glass-border);
   padding: var(--sp-4) 0;
-}
-
-.theme-dark .lesson-actions {
-  background: rgba(22, 22, 19, 0.96);
 }
 
 .lesson-actions__inner {
@@ -434,34 +546,38 @@
 .lesson-actions__rate {
   font-size: var(--text-sm);
   padding: 0.5rem 1rem;
-  border-radius: var(--border-radius-md);
+  border-radius: var(--radius-md);
   font-weight: 600;
   white-space: nowrap;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: background var(--transition-fast), border-color var(--transition-fast);
 }
 
 .lesson-actions__rate--learning {
-  background: var(--color-warning-light);
-  color: var(--color-warning);
-  border-color: rgba(163, 98, 34, 0.2);
+  background: var(--ll-warning-tint);
+  color: var(--ll-warning);
+  border-color: rgba(251, 146, 60, 0.2);
 }
 
 .lesson-actions__rate--learning:hover {
-  background: rgba(163, 98, 34, 0.15);
-  border-color: rgba(163, 98, 34, 0.35);
+  background: rgba(251, 146, 60, 0.15);
+  border-color: rgba(251, 146, 60, 0.35);
 }
 
 .lesson-actions__rate--known {
-  background: var(--color-success-light);
-  color: var(--color-success);
-  border-color: rgba(46, 107, 74, 0.2);
+  background: var(--ll-success-tint);
+  color: var(--ll-success);
+  border-color: rgba(74, 222, 128, 0.2);
 }
 
 .lesson-actions__rate--known:hover {
-  background: rgba(46, 107, 74, 0.15);
-  border-color: rgba(46, 107, 74, 0.35);
+  background: rgba(74, 222, 128, 0.15);
+  border-color: rgba(74, 222, 128, 0.35);
 }
 
-/* ── Completion screen ──────────────────────────────────────────── */
+/* ── Completion screen ───────────────────────────────────────────── */
 .lesson-complete {
   padding: var(--sp-20) 0;
 }
@@ -475,24 +591,24 @@
 }
 
 .lesson-complete__icon {
-  width: 72px;
-  height: 72px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  background: var(--color-success-light);
-  color: var(--color-success);
+  background: var(--ll-success-tint);
+  color: var(--ll-success);
   font-size: var(--text-3xl);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  border: 2px solid rgba(46, 107, 74, 0.2);
+  border: 2px solid rgba(74, 222, 128, 0.2);
+  box-shadow: 0 0 30px rgba(74, 222, 128, 0.12);
 }
 
 .lesson-complete__title {
   font-family: var(--font-display);
   font-size: var(--text-3xl);
   font-weight: 700;
-  font-variation-settings: 'opsz' 36;
   color: var(--color-text);
   letter-spacing: -0.02em;
 }
@@ -512,26 +628,29 @@
   margin-top: var(--sp-2);
 }
 
-/* ── Toast notification ─────────────────────────────────────────── */
+/* ── Toast ───────────────────────────────────────────────────────── */
 .lesson-toast {
   position: fixed;
-  bottom: calc(72px + var(--sp-5));  /* above action bar */
+  bottom: calc(72px + var(--sp-5));
   left: 50%;
   transform: translateX(-50%) translateY(8px);
-  background: var(--color-text);
-  color: var(--color-bg);
+  background: var(--bg-surface-highest);
+  color: var(--color-text);
+  border: 1px solid var(--glass-border);
   font-size: var(--text-sm);
   font-weight: 500;
   padding: var(--sp-3) var(--sp-5);
-  border-radius: var(--border-radius-full);
+  border-radius: var(--radius-full);
   opacity: 0;
   pointer-events: none;
   transition:
     opacity var(--transition-base),
     transform var(--transition-base);
   white-space: nowrap;
-  z-index: 200;
+  z-index: var(--z-toast);
   max-width: calc(100vw - var(--sp-8));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .lesson-toast.is-visible {
@@ -539,14 +658,14 @@
   transform: translateX(-50%) translateY(0);
 }
 
-/* ── Loading state ──────────────────────────────────────────────── */
+/* ── Loading ─────────────────────────────────────────────────────── */
 .lesson-loading {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: var(--sp-5);
-  padding: var(--sp-32) var(--sp-8);
+  padding: 8rem var(--sp-8);
   color: var(--color-text-muted);
   font-size: var(--text-sm);
 }
@@ -554,8 +673,8 @@
 .lesson-loading__spinner {
   width: 32px;
   height: 32px;
-  border: 2.5px solid var(--color-border);
-  border-top-color: var(--color-primary);
+  border: 2.5px solid var(--glass-border);
+  border-top-color: var(--color-secondary);
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
 }
@@ -568,7 +687,7 @@
   .lesson-loading__spinner { animation: none; opacity: 0.5; }
 }
 
-/* ── Error state ────────────────────────────────────────────────── */
+/* ── Error ───────────────────────────────────────────────────────── */
 .lesson-error {
   padding: var(--sp-20) 0;
   color: var(--color-text-muted);
@@ -576,47 +695,63 @@
   line-height: 1.7;
 }
 
-/* ── Mobile ─────────────────────────────────────────────────────── */
+.lesson-error a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+/* ── Mobile nav ──────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .lesson-sitenav__links {
+    display: none;
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid var(--glass-border);
+    flex-direction: column;
+    padding: var(--sp-4);
+    gap: var(--sp-1);
+    z-index: var(--z-nav);
+  }
+  .lesson-sitenav__links.is-open { display: flex; }
+  .lesson-sitenav__hamburger { display: flex; }
+}
+
+/* ── Mobile ──────────────────────────────────────────────────────── */
 @media (max-width: 480px) {
   .flashcard__face {
     padding: var(--sp-8) var(--sp-5);
   }
-
   .flashcard__face--back {
     padding-top: var(--sp-6);
   }
-
   .lesson-actions__btn {
     min-width: 60px;
     padding-inline: var(--sp-3);
   }
-
   .lesson-actions__rate {
     font-size: var(--text-xs);
     padding: 0.45rem 0.75rem;
   }
-
-  .lesson-complete {
-    padding: var(--sp-12) 0;
-  }
-
-  .alphabet-card {
-    padding: var(--sp-8) var(--sp-5);
-  }
+  .lesson-complete { padding: var(--sp-12) 0; }
+  .alphabet-card { padding: var(--sp-8) var(--sp-5); }
 }
 
-/* ===================================================================
-   Quiz styles
-   =================================================================== */
+/* ═══════════════════════════════════════════════════════════════════
+   QUIZ STYLES
+   ═══════════════════════════════════════════════════════════════════ */
 
-/* ── Container ──────────────────────────────────────────────────── */
 .quiz-container {
   max-width: 640px;
   margin: 0 auto;
   padding: var(--sp-6) 0;
 }
 
-/* ── Progress dots ──────────────────────────────────────────────── */
+/* ── Progress dots ───────────────────────────────────────────────── */
 .quiz-progress {
   display: flex;
   gap: var(--sp-2);
@@ -628,24 +763,24 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--color-border);
+  background: var(--glass-border);
   transition: all var(--transition-base);
 }
 
 .quiz-progress__dot--current {
   background: var(--color-primary);
   width: 24px;
-  border-radius: var(--border-radius-full);
+  border-radius: var(--radius-full);
 }
 
-.quiz-progress__dot--answered-correct { background: var(--color-success); }
-.quiz-progress__dot--answered-wrong   { background: var(--color-secondary); }
+.quiz-progress__dot--answered-correct { background: var(--ll-success); }
+.quiz-progress__dot--answered-wrong   { background: var(--color-error); }
 
-/* ── Question card ──────────────────────────────────────────────── */
+/* ── Question card ───────────────────────────────────────────────── */
 .quiz-question {
-  background: var(--color-surface);
-  border: 1.5px solid var(--color-border);
-  border-radius: var(--border-radius-xl);
+  background: var(--bg-surface);
+  border: 1.5px solid var(--glass-border);
+  border-radius: var(--radius-xl);
   padding: var(--sp-10) var(--sp-8);
   text-align: center;
   margin-bottom: var(--sp-6);
@@ -672,7 +807,6 @@
   font-family: var(--font-display);
   font-size: clamp(1.5rem, 4vw, 2.5rem);
   font-weight: 600;
-  font-variation-settings: 'opsz' 36;
   letter-spacing: -0.02em;
   line-height: 1.2;
   color: var(--color-text);
@@ -690,7 +824,7 @@
   font-style: italic;
 }
 
-/* ── Option grid ────────────────────────────────────────────────── */
+/* ── Options ─────────────────────────────────────────────────────── */
 .quiz-options {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -701,7 +835,6 @@
   .quiz-options { grid-template-columns: 1fr; }
 }
 
-/* ── Option button ──────────────────────────────────────────────── */
 .quiz-option {
   display: flex;
   flex-direction: column;
@@ -709,9 +842,9 @@
   justify-content: center;
   gap: var(--sp-1);
   padding: var(--sp-5) var(--sp-4);
-  background: var(--color-surface);
-  border: 1.5px solid var(--color-border);
-  border-radius: var(--border-radius-md);
+  background: var(--glass-bg);
+  border: 1.5px solid var(--glass-border);
+  border-radius: var(--radius-md);
   font-family: var(--font-active);
   font-size: var(--text-md);
   color: var(--color-text);
@@ -719,17 +852,18 @@
   text-align: center;
   line-height: 1.4;
   transition: all var(--transition-base);
-  position: relative;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .quiz-option:hover:not(:disabled) {
-  border-color: var(--color-primary);
-  background: var(--color-primary-light);
+  border-color: var(--glass-border-hover);
+  background: var(--ll-primary-tint);
   color: var(--color-primary);
 }
 
 .quiz-option:focus-visible {
-  outline: 3px solid var(--color-border-focus);
+  outline: 3px solid var(--color-primary);
   outline-offset: 2px;
 }
 
@@ -754,18 +888,18 @@
 }
 
 .quiz-option--correct {
-  background: var(--color-primary);
-  color: #fff;
-  border-color: var(--color-primary);
+  background: var(--ll-success-tint);
+  color: var(--ll-success);
+  border-color: rgba(74, 222, 128, 0.3);
 }
 
 .quiz-option--wrong {
-  background: var(--color-secondary);
-  color: #fff;
-  border-color: var(--color-secondary);
+  background: rgba(255, 180, 171, 0.08);
+  color: var(--color-error);
+  border-color: rgba(255, 180, 171, 0.25);
 }
 
-/* ── Results screen ─────────────────────────────────────────────── */
+/* ── Results ─────────────────────────────────────────────────────── */
 .quiz-results {
   text-align: center;
   padding: var(--sp-12) var(--sp-6);
@@ -775,8 +909,7 @@
   font-family: var(--font-display);
   font-size: clamp(4rem, 10vw, 7rem);
   font-weight: 700;
-  font-variation-settings: 'opsz' 72;
-  color: var(--color-primary);
+  color: var(--color-secondary);
   line-height: 1;
   margin-bottom: var(--sp-4);
   letter-spacing: -0.04em;
@@ -792,7 +925,6 @@
   font-family: var(--font-display);
   font-size: clamp(var(--text-2xl), 4vw, var(--text-3xl));
   font-weight: 600;
-  font-variation-settings: 'opsz' 36;
   color: var(--color-text);
   letter-spacing: -0.02em;
   margin-bottom: var(--sp-3);
@@ -815,11 +947,6 @@
 }
 
 @media (max-width: 480px) {
-  .quiz-question {
-    padding: var(--sp-8) var(--sp-5);
-  }
-
-  .quiz-results {
-    padding: var(--sp-8) var(--sp-4);
-  }
+  .quiz-question { padding: var(--sp-8) var(--sp-5); }
+  .quiz-results { padding: var(--sp-8) var(--sp-4); }
 }

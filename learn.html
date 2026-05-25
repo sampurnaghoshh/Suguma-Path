@@ -1,179 +1,214 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"
-    content="Learn Kannada at your own pace — vowels, consonants, numbers, and everyday vocabulary with audio pronunciation and quizzes. No timers, no pressure." />
   <title>Learn Kannada — SugamaPath</title>
+  <meta name="description" content="Learn survival Kannada for Bengaluru in 8 interactive lessons. Vocabulary, script, audio pronunciation, and quizzes. No timers, no pressure." />
+
+  <!-- Flash prevention: restore theme before first paint -->
+  <script>
+    (function () {
+      var t = localStorage.getItem('sugamapath_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+      if (localStorage.getItem('sugamapath_dyslexic') === 'true') {
+        document.documentElement.classList.add('font-dyslexic');
+      }
+    })();
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,opsz,wght@0,5..1200,400..900;1,5..1200,400..700&family=Lexend:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/design-tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/motion.css" />
+  <link rel="stylesheet" href="css/learn.css" />
 
   <script src="js/settings.js"></script>
-
-  <link rel="stylesheet" href="css/global.css" />
-  <link rel="stylesheet" href="css/learn.css" />
 </head>
-<body>
+<body class="mesh-bg">
 
-  <a class="skip-nav" href="#main-content">Skip to main content</a>
+  <!-- ── Navigation ──────────────────────────────────────────────── -->
+  <nav class="learn-nav glass-panel" role="navigation" aria-label="Main navigation">
+    <div class="learn-nav__inner container">
+      <a href="index.html" class="learn-nav__logo" aria-label="SugamaPath home">
+        <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="var(--color-secondary)" opacity="0.15"/>
+          <text x="16" y="22" text-anchor="middle" font-size="18" fill="var(--color-secondary)">ಕ</text>
+        </svg>
+        <span class="learn-nav__brand">SugamaPath</span>
+      </a>
 
-  <!-- ====================================================================
-       Navigation
-       ==================================================================== -->
-  <header>
-    <nav class="nav" aria-label="Main navigation">
-      <div class="container">
-        <div class="nav__inner">
-
-          <a href="index.html" class="nav__logo" aria-label="SugamaPath home">
-            <span class="nav__logo-icon" aria-hidden="true">🌿</span>
-            Sugama<span>Path</span>
-          </a>
-
-          <button
-            class="nav__toggle"
-            aria-controls="nav-links"
-            aria-expanded="false"
-            aria-label="Toggle navigation menu"
-          >
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-              <rect y="4"  width="22" height="2.5" rx="1.25" fill="currentColor"/>
-              <rect y="10" width="22" height="2.5" rx="1.25" fill="currentColor"/>
-              <rect y="16" width="22" height="2.5" rx="1.25" fill="currentColor"/>
-            </svg>
-          </button>
-
-          <ul class="nav__links" id="nav-links" role="list">
-            <li><a href="index.html"     class="nav__link">Home</a></li>
-            <li><a href="reading.html"   class="nav__link">Reading</a></li>
-            <li><a href="learn.html"     class="nav__link" aria-current="page">Learn</a></li>
-            <li><a href="dashboard.html" class="nav__link">Progress</a></li>
-            <li><a href="settings.html"  class="nav__link">Settings</a></li>
-          </ul>
-
-        </div>
+      <div class="learn-nav__links" id="nav-links">
+        <a href="reading.html" class="learn-nav__link">Reading</a>
+        <a href="learn.html" class="learn-nav__link learn-nav__link--active" aria-current="page">Learn Kannada</a>
+        <a href="dashboard.html" class="learn-nav__link">Progress</a>
+        <a href="settings.html" class="learn-nav__link">Settings</a>
       </div>
-    </nav>
+
+      <div class="learn-nav__actions">
+        <button class="btn btn--ghost btn--small btn--icon" id="btn-dyslexic" type="button"
+                aria-label="Toggle dyslexic-friendly font" aria-pressed="false"
+                title="Toggle OpenDyslexic font">Aa</button>
+        <button class="btn btn--ghost btn--small btn--icon" id="btn-theme" type="button"
+                aria-label="Cycle colour theme">
+          <span id="theme-icon" aria-hidden="true">◑</span>
+        </button>
+        <button class="learn-nav__hamburger btn btn--ghost btn--small btn--icon" id="nav-toggle" type="button"
+                aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M2 4h14M2 9h14M2 14h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Course Hero ──────────────────────────────────────────────── -->
+  <header class="learn-hero">
+    <div class="container">
+      <div class="learn-hero__inner">
+        <p class="learn-hero__eyebrow text-label-caps">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          Survival Kannada &nbsp;·&nbsp; Bengaluru
+        </p>
+        <h1 class="learn-hero__title">
+          Speak like you<br>
+          <em class="gradient-text">belong here</em>
+        </h1>
+        <p class="learn-hero__subtitle">
+          8 lessons. The complete toolkit for navigating life in Bengaluru — from auto negotiations to ordering filter coffee to reading a bus board.
+        </p>
+        <!-- Progress summary — populated by learn.js -->
+        <div class="learn-summary glass-panel glass-panel--sm"
+             id="learn-summary"
+             aria-label="Course progress summary"></div>
+      </div>
+
+      <!-- Decorative Kannada glyph -->
+      <div class="learn-hero__glyph" aria-hidden="true">
+        <span class="learn-hero__glyph-text floating">ಕ</span>
+      </div>
+    </div>
   </header>
 
-  <!-- ====================================================================
-       Main content
-       ==================================================================== -->
-  <main id="main-content">
+  <!-- ── Lessons ──────────────────────────────────────────────────── -->
+  <main id="main-content" class="learn-main">
+    <div class="container">
 
-    <!-- ── Hero strip ──────────────────────────────────────────────── -->
-    <section class="learn-hero" aria-labelledby="learn-heading">
-      <div class="container">
-        <div class="learn-hero__eyebrow">Bengaluru Survival Kit</div>
-        <h1 id="learn-heading" class="learn-hero__title">Learn Kannada</h1>
-        <p class="learn-hero__subtitle">
-          Real phrases for real life in Karnataka — auto rickshaws,
-          restaurants, shopping, asking for help. Not alphabet drills.
-          Just the words you'll actually use.
-        </p>
-        <p class="learn-hero__intro">
-          Most language apps teach you to recite the alphabet. SugamaPath
-          teaches you what to say when your auto driver refuses to use the
-          meter. Start with greetings and work through everyday scenarios.
-          Bonus alphabet lessons at the end for when you're ready to read
-          signs and menus.
-        </p>
+      <!-- Filter pills -->
+      <div class="learn-filters" id="learn-filters"
+           role="group" aria-label="Filter lessons by type">
+        <button class="learn-filter__btn learn-filter__btn--active"
+                data-filter="all" type="button">All lessons</button>
+        <button class="learn-filter__btn"
+                data-filter="core" type="button">Core phrases</button>
+        <button class="learn-filter__btn"
+                data-filter="bonus" type="button">Learn the script</button>
       </div>
-    </section>
 
-    <!-- ── Lesson grid ──────────────────────────────────────────────── -->
-    <section class="learn-section" aria-labelledby="lessons-heading">
-      <div class="container">
-
-        <!-- Summary stats — populated by learn.js -->
-        <div class="learn-summary" id="learn-summary" aria-label="Course overview">
-          <!-- JS renders: total time · lesson count · completed count · overall % -->
-        </div>
-
-        <h2 id="lessons-heading" class="learn-section__heading">All lessons</h2>
-
-        <!-- Cards injected by learn.js -->
-        <div class="lesson-grid" id="lesson-grid" role="list" aria-label="Kannada lessons">
-          <!-- Fallback if JS is disabled -->
-          <noscript>
-            <p style="color: var(--color-text-muted); padding: var(--sp-8) 0;">
-              Please enable JavaScript to see the lesson grid.
-            </p>
-          </noscript>
-        </div>
-
+      <!-- Lesson grid — learn.js injects cards here -->
+      <div class="lesson-grid" id="lesson-grid" role="list">
       </div>
-    </section>
 
+    </div>
   </main>
 
-  <!-- ====================================================================
-       Footer
-       ==================================================================== -->
-  <footer class="footer" aria-label="Site footer">
+  <!-- ── Footer ───────────────────────────────────────────────────── -->
+  <footer class="learn-footer">
     <div class="container">
-      <div class="footer__inner">
-
-        <div class="footer__brand">
-          <div class="footer__brand-name">🌿 Sugama<span>Path</span></div>
-          <p class="footer__tagline">
-            An accessible reading and language learning platform for
-            neurodivergent learners. Designed with care.
-          </p>
+      <div class="learn-footer__inner">
+        <div class="learn-footer__left">
+          <a href="index.html" class="learn-footer__brand" aria-label="SugamaPath home">
+            <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <rect width="32" height="32" rx="8" fill="var(--color-secondary)" opacity="0.15"/>
+              <text x="16" y="22" text-anchor="middle" font-size="18" fill="var(--color-secondary)">ಕ</text>
+            </svg>
+            SugamaPath
+          </a>
+          <p class="learn-footer__tagline">Accessible language learning for everyone navigating Bengaluru.</p>
         </div>
-
-        <nav class="footer__links-group" aria-label="Tools navigation">
-          <div class="footer__links-heading">Tools</div>
-          <a href="reading.html"   class="footer__link">Reading Tool</a>
-          <a href="learn.html"     class="footer__link">Learn Kannada</a>
-          <a href="practice.html"  class="footer__link">Script Practice</a>
-          <a href="dashboard.html" class="footer__link">My Progress</a>
+        <nav class="learn-footer__nav" aria-label="Footer links">
+          <a href="reading.html">Reading Tool</a>
+          <a href="dashboard.html">My Progress</a>
+          <a href="settings.html">Settings</a>
         </nav>
-
-        <nav class="footer__links-group" aria-label="Settings navigation">
-          <div class="footer__links-heading">Settings</div>
-          <a href="settings.html"           class="footer__link">Accessibility Settings</a>
-          <a href="dashboard.html#notebook" class="footer__link">Vocabulary Notebook</a>
-        </nav>
-
       </div>
-
-      <div class="footer__bottom">
-        <span>© 2025 SugamaPath. Made with care for neurodivergent learners.</span>
-        <span>"Sugama" (ಸುಗಮ) means comfortable or easy in Kannada.</span>
-      </div>
+      <p class="learn-footer__copy">Made with care for neurodivergent learners.</p>
     </div>
   </footer>
 
-  <!-- ====================================================================
-       Scripts
-       ==================================================================== -->
-  <script>
-    const navToggle = document.querySelector('.nav__toggle');
-    const navLinks  = document.querySelector('.nav__links');
-    if (navToggle && navLinks) {
-      navToggle.addEventListener('click', () => {
-        const open = navLinks.classList.toggle('is-open');
-        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-      navLinks.querySelectorAll('.nav__link').forEach(link => {
-        link.addEventListener('click', () => {
-          navLinks.classList.remove('is-open');
-          navToggle.setAttribute('aria-expanded', 'false');
-        });
-      });
-      document.addEventListener('click', e => {
-        if (!e.target.closest('.nav')) {
-          navLinks.classList.remove('is-open');
-          navToggle.setAttribute('aria-expanded', 'false');
-        }
-      });
-    }
-  </script>
-  <script src="js/animations.js"></script>
+  <!-- Scripts -->
+  <script src="js/motion.js"></script>
   <script src="js/learn.js"></script>
+
+  <script>
+    (function () {
+      /* ── Theme cycle ────────────────────────────────────────────── */
+      var THEMES = ['dark', 'light', 'hc'];
+      var themeIndex = THEMES.indexOf(localStorage.getItem('sugamapath_theme') || 'dark');
+      if (themeIndex < 0) themeIndex = 0;
+      var icons = { dark: '◑', light: '☀', hc: '◉' };
+
+      function applyTheme(t) {
+        document.documentElement.setAttribute('data-theme', t);
+        localStorage.setItem('sugamapath_theme', t);
+        var ic = document.getElementById('theme-icon');
+        if (ic) ic.textContent = icons[t] || '◑';
+      }
+      applyTheme(THEMES[themeIndex]);
+
+      document.getElementById('btn-theme').addEventListener('click', function () {
+        themeIndex = (themeIndex + 1) % THEMES.length;
+        applyTheme(THEMES[themeIndex]);
+      });
+
+      /* ── Dyslexic font ──────────────────────────────────────────── */
+      var btnD = document.getElementById('btn-dyslexic');
+      var dxOn = localStorage.getItem('sugamapath_dyslexic') === 'true';
+      btnD.setAttribute('aria-pressed', String(dxOn));
+      btnD.addEventListener('click', function () {
+        dxOn = !dxOn;
+        document.documentElement.classList.toggle('font-dyslexic', dxOn);
+        localStorage.setItem('sugamapath_dyslexic', String(dxOn));
+        btnD.setAttribute('aria-pressed', String(dxOn));
+      });
+
+      /* ── Mobile nav ─────────────────────────────────────────────── */
+      var toggle   = document.getElementById('nav-toggle');
+      var navLinks = document.getElementById('nav-links');
+      toggle.addEventListener('click', function () {
+        var open = navLinks.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+
+      /* ── Filter pills ───────────────────────────────────────────── */
+      var filterBtns   = document.querySelectorAll('.learn-filter__btn');
+      var activeFilter = 'all';
+
+      function applyFilter(filter) {
+        activeFilter = filter;
+        filterBtns.forEach(function (b) {
+          b.classList.toggle('learn-filter__btn--active', b.dataset.filter === filter);
+        });
+        var grid = document.getElementById('lesson-grid');
+        if (!grid) return;
+        grid.querySelectorAll('.lesson-card').forEach(function (card) {
+          card.style.display =
+            (filter === 'all' || card.dataset.priority === filter) ? '' : 'none';
+        });
+        grid.querySelectorAll('.lesson-grid__separator').forEach(function (sep) {
+          sep.style.display = filter === 'all' ? '' : 'none';
+        });
+      }
+
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () { applyFilter(btn.dataset.filter); });
+      });
+    })();
+  </script>
 
 </body>
 </html>

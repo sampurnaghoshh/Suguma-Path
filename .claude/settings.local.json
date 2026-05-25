@@ -12,7 +12,11 @@
       "PowerShell(Start-Process \"http://localhost:8787/_design-system.html\")",
       "Bash(curl *)",
       "Bash(grep -c 'id=\"__TRACKED_VAR__\"' 'C:\\\\Users\\\\sampu\\\\OneDrive\\\\Desktop\\\\WEBProject\\\\reading.html')",
-      "Bash(grep -c 'class=\".*__TRACKED_VAR__\\\\|class=\"__TRACKED_VAR__' 'C:\\\\Users\\\\sampu\\\\OneDrive\\\\Desktop\\\\WEBProject\\\\reading.html')"
+      "Bash(grep -c 'class=\".*__TRACKED_VAR__\\\\|class=\"__TRACKED_VAR__' 'C:\\\\Users\\\\sampu\\\\OneDrive\\\\Desktop\\\\WEBProject\\\\reading.html')",
+      "Bash(Copy-Item \"C:\\\\Users\\\\sampu\\\\OneDrive\\\\Desktop\\\\WEBProject\\\\learn.html\" \"C:\\\\Users\\\\sampu\\\\OneDrive\\\\Desktop\\\\WEBProject\\\\learn.html.v1.backup\" -Force)",
+      "Bash(Copy-Item \"C:\\\\Users\\\\sampu\\\\OneDrive\\\\Desktop\\\\WEBProject\\\\lesson.html\" \"C:\\\\Users\\\\sampu\\\\OneDrive\\\\Desktop\\\\WEBProject\\\\lesson.html.v1.backup\" -Force)",
+      "Bash(Write-Output \"Backups created\")",
+      "PowerShell(Copy-Item *)"
     ]
   }
 }

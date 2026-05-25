@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Learn Kannada at your own pace — vowels, consonants, numbers, and everyday vocabulary with audio pronunciation and quizzes. No timers, no pressure." />
+  <title>Learn Kannada — SugamaPath</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <script src="js/settings.js"></script>
+
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/learn.css" />
+</head>
+<body>
+
+  <a class="skip-nav" href="#main-content">Skip to main content</a>
+
+  <!-- ====================================================================
+       Navigation
+       ==================================================================== -->
+  <header>
+    <nav class="nav" aria-label="Main navigation">
+      <div class="container">
+        <div class="nav__inner">
+
+          <a href="index.html" class="nav__logo" aria-label="SugamaPath home">
+            <span class="nav__logo-icon" aria-hidden="true">🌿</span>
+            Sugama<span>Path</span>
+          </a>
+
+          <button
+            class="nav__toggle"
+            aria-controls="nav-links"
+            aria-expanded="false"
+            aria-label="Toggle navigation menu"
+          >
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <rect y="4"  width="22" height="2.5" rx="1.25" fill="currentColor"/>
+              <rect y="10" width="22" height="2.5" rx="1.25" fill="currentColor"/>
+              <rect y="16" width="22" height="2.5" rx="1.25" fill="currentColor"/>
+            </svg>
+          </button>
+
+          <ul class="nav__links" id="nav-links" role="list">
+            <li><a href="index.html"     class="nav__link">Home</a></li>
+            <li><a href="reading.html"   class="nav__link">Reading</a></li>
+            <li><a href="learn.html"     class="nav__link" aria-current="page">Learn</a></li>
+            <li><a href="dashboard.html" class="nav__link">Progress</a></li>
+            <li><a href="settings.html"  class="nav__link">Settings</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ====================================================================
+       Main content
+       ==================================================================== -->
+  <main id="main-content">
+
+    <!-- ── Hero strip ──────────────────────────────────────────────── -->
+    <section class="learn-hero" aria-labelledby="learn-heading">
+      <div class="container">
+        <div class="learn-hero__eyebrow">Bengaluru Survival Kit</div>
+        <h1 id="learn-heading" class="learn-hero__title">Learn Kannada</h1>
+        <p class="learn-hero__subtitle">
+          Real phrases for real life in Karnataka — auto rickshaws,
+          restaurants, shopping, asking for help. Not alphabet drills.
+          Just the words you'll actually use.
+        </p>
+        <p class="learn-hero__intro">
+          Most language apps teach you to recite the alphabet. SugamaPath
+          teaches you what to say when your auto driver refuses to use the
+          meter. Start with greetings and work through everyday scenarios.
+          Bonus alphabet lessons at the end for when you're ready to read
+          signs and menus.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── Lesson grid ──────────────────────────────────────────────── -->
+    <section class="learn-section" aria-labelledby="lessons-heading">
+      <div class="container">
+
+        <!-- Summary stats — populated by learn.js -->
+        <div class="learn-summary" id="learn-summary" aria-label="Course overview">
+          <!-- JS renders: total time · lesson count · completed count · overall % -->
+        </div>
+
+        <h2 id="lessons-heading" class="learn-section__heading">All lessons</h2>
+
+        <!-- Cards injected by learn.js -->
+        <div class="lesson-grid" id="lesson-grid" role="list" aria-label="Kannada lessons">
+          <!-- Fallback if JS is disabled -->
+          <noscript>
+            <p style="color: var(--color-text-muted); padding: var(--sp-8) 0;">
+              Please enable JavaScript to see the lesson grid.
+            </p>
+          </noscript>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================================================================
+       Footer
+       ==================================================================== -->
+  <footer class="footer" aria-label="Site footer">
+    <div class="container">
+      <div class="footer__inner">
+
+        <div class="footer__brand">
+          <div class="footer__brand-name">🌿 Sugama<span>Path</span></div>
+          <p class="footer__tagline">
+            An accessible reading and language learning platform for
+            neurodivergent learners. Designed with care.
+          </p>
+        </div>
+
+        <nav class="footer__links-group" aria-label="Tools navigation">
+          <div class="footer__links-heading">Tools</div>
+          <a href="reading.html"   class="footer__link">Reading Tool</a>
+          <a href="learn.html"     class="footer__link">Learn Kannada</a>
+          <a href="practice.html"  class="footer__link">Script Practice</a>
+          <a href="dashboard.html" class="footer__link">My Progress</a>
+        </nav>
+
+        <nav class="footer__links-group" aria-label="Settings navigation">
+          <div class="footer__links-heading">Settings</div>
+          <a href="settings.html"           class="footer__link">Accessibility Settings</a>
+          <a href="dashboard.html#notebook" class="footer__link">Vocabulary Notebook</a>
+        </nav>
+
+      </div>
+
+      <div class="footer__bottom">
+        <span>© 2025 SugamaPath. Made with care for neurodivergent learners.</span>
+        <span>"Sugama" (ಸುಗಮ) means comfortable or easy in Kannada.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====================================================================
+       Scripts
+       ==================================================================== -->
+  <script>
+    const navToggle = document.querySelector('.nav__toggle');
+    const navLinks  = document.querySelector('.nav__links');
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('is-open');
+        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      navLinks.querySelectorAll('.nav__link').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('is-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+      document.addEventListener('click', e => {
+        if (!e.target.closest('.nav')) {
+          navLinks.classList.remove('is-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  </script>
+  <script src="js/animations.js"></script>
+  <script src="js/learn.js"></script>
+
+</body>
+</html>
