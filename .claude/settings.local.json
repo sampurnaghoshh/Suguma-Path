@@ -8,7 +8,8 @@
       "Bash(Remove-Item -Path \"C:\\\\Users\\\\sampu\\\\OneDrive\\\\Desktop\\\\WEBProject\\\\data\\\\kannada-numbers.json\" -Force)",
       "Bash(Write-Output \"Deleted\")",
       "PowerShell(Remove-Item *)",
-      "PowerShell(Get-Command *)"
+      "PowerShell(Get-Command *)",
+      "PowerShell(Start-Process \"http://localhost:8787/_design-system.html\")"
     ]
   }
 }
