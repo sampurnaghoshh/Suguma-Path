@@ -1,0 +1,268 @@
+/* ═══════════════════════════════════════════════════════════════════
+   motion.css — SugamaPath motion library styles
+   Depends on design-tokens.css for custom properties.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Cursor glow ─────────────────────────────────────────────────── */
+.cursor-glow {
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(
+    circle,
+    var(--glow-violet)           0%,
+    rgba(78, 222, 163, 0.05)    40%,
+    transparent                  70%
+  );
+  position: fixed;
+  pointer-events: none;
+  z-index: var(--z-cursor-glow);
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+  mix-blend-mode: screen;
+}
+
+[data-theme="light"] .cursor-glow {
+  background: radial-gradient(
+    circle,
+    rgba(61, 107, 90, 0.08)     0%,
+    rgba(155, 80, 64, 0.04)    40%,
+    transparent                  70%
+  );
+  mix-blend-mode: multiply;
+}
+
+[data-theme="hc"] .cursor-glow {
+  display: none;
+}
+
+/* ── Magnetic button base ────────────────────────────────────────── */
+.btn--magnetic {
+  transition: transform var(--transition-magnetic);
+  will-change: transform;
+}
+
+/* ── Tilt card ───────────────────────────────────────────────────── */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 200ms ease-out;
+  will-change: transform;
+}
+
+/* ── Scroll reveal ───────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity   1s var(--ease-out-expo),
+    transform 1s var(--ease-out-expo);
+  will-change: transform, opacity;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Direction variants */
+.reveal--left  { transform: translateX(-40px); }
+.reveal--right { transform: translateX(40px);  }
+.reveal--scale { transform: scale(0.94);        }
+.reveal--fade  { transform: none;               }
+
+.reveal--left.is-visible,
+.reveal--right.is-visible,
+.reveal--scale.is-visible,
+.reveal--fade.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Parallax ────────────────────────────────────────────────────── */
+.parallax-hero {
+  perspective: 1000px;
+  overflow: hidden;
+  position: relative;
+}
+
+.parallax-bg {
+  will-change: transform;
+}
+
+/* ── Floating animation ──────────────────────────────────────────── */
+.floating {
+  animation: float 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.floating--slow { animation-duration: 9s; }
+.floating--fast { animation-duration: 4s; }
+
+/* Phase offset so multiple floaters don't sync */
+.floating:nth-child(2) { animation-delay: -2s; }
+.floating:nth-child(3) { animation-delay: -4s; }
+.floating:nth-child(4) { animation-delay: -1s; }
+
+@keyframes float {
+  0%,  100% { transform: translateY(0px)   rotate(0deg);   }
+  33%        { transform: translateY(-16px) rotate(1.5deg); }
+  66%        { transform: translateY(-8px)  rotate(-1deg);  }
+}
+
+/* ── Stagger list — children get .reveal added by JS ────────────── */
+.reveal-list > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity   0.6s var(--ease-out-expo),
+    transform 0.6s var(--ease-out-expo);
+}
+
+.reveal-list > *.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Pulse dot — for "live" or "active" indicators ──────────────── */
+.pulse-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  animation: pulse-dot 2s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.pulse-dot--primary {
+  background: var(--color-primary);
+}
+
+.pulse-dot--error {
+  background: var(--color-error);
+}
+
+@keyframes pulse-dot {
+  0%,  100% { opacity: 1;   transform: scale(1);   }
+  50%        { opacity: 0.4; transform: scale(1.3); }
+}
+
+/* ── Glow text ───────────────────────────────────────────────────── */
+.glow-text {
+  text-shadow: 0 0 40px var(--glow-primary), 0 0 80px var(--glow-primary);
+}
+
+.glow-text--secondary {
+  text-shadow: 0 0 40px var(--glow-secondary), 0 0 80px var(--glow-secondary);
+}
+
+.glow-text--tertiary {
+  text-shadow: 0 0 40px var(--glow-tertiary), 0 0 80px var(--glow-tertiary);
+}
+
+/* ── Gradient text ───────────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary)    0%,
+    var(--color-secondary) 50%,
+    var(--color-tertiary)  100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.gradient-text--warm {
+  background: linear-gradient(
+    135deg,
+    var(--color-secondary) 0%,
+    var(--color-tertiary)  100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+/* ── Shimmer loading skeleton ────────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-surface-raised) 25%,
+    var(--bg-surface-high)   50%,
+    var(--bg-surface-raised) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-sweep 1.5s ease-in-out infinite;
+  border-radius: var(--radius-md);
+}
+
+@keyframes skeleton-sweep {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
+/* ── Entrance animations — for modals, toasts, drawers ──────────── */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-24px); }
+  to   { opacity: 1; transform: translateY(0);     }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1);    }
+}
+
+.animate-slide-up   { animation: slide-up   var(--transition-elastic) both; }
+.animate-slide-down { animation: slide-down var(--transition-elastic) both; }
+.animate-fade-in    { animation: fade-in    var(--transition-base)    both; }
+.animate-scale-in   { animation: scale-in   var(--transition-bounce)  both; }
+
+/* ── Reduced motion overrides ────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .cursor-glow,
+  .floating,
+  .pulse-dot,
+  .skeleton {
+    animation: none !important;
+  }
+
+  .reveal,
+  .reveal--left,
+  .reveal--right,
+  .reveal--scale,
+  .reveal--fade,
+  .reveal-list > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .tilt-card,
+  .btn--magnetic {
+    transition: none;
+    transform: none !important;
+  }
+
+  .animate-slide-up,
+  .animate-slide-down,
+  .animate-fade-in,
+  .animate-scale-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -6,6 +6,7 @@
   <title>Design System — SugamaPath</title>
   <link rel="stylesheet" href="css/design-tokens.css" />
   <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/motion.css" />
   <style>
     /* ── Page chrome ─────────────────────────────────────────────── */
     body {
@@ -730,6 +731,200 @@
     </section>
 
   </div><!-- /container -->
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- MOTION LIBRARY                                          -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="ds-section container" aria-labelledby="sec-motion-lib" style="padding-top:var(--sp-16);padding-bottom:var(--sp-24)">
+    <div class="ds-section-label">12</div>
+    <h2 class="ds-section-title" id="sec-motion-lib">Motion Library</h2>
+
+    <!-- Cursor glow note -->
+    <div class="glass-panel" style="padding:var(--sp-5) var(--sp-6);margin-bottom:var(--sp-12);border-radius:var(--radius-xl);display:flex;align-items:center;gap:var(--sp-3)">
+      <span class="pulse-dot"></span>
+      <span class="text-label" style="color:var(--color-text-muted)">
+        Cursor glow is active — move your mouse across the page to see it follow.
+      </span>
+    </div>
+
+    <!-- Magnetic buttons -->
+    <h3 class="text-label-caps" style="color:var(--color-secondary);margin-bottom:var(--sp-4)">Magnetic Buttons — hover and feel the pull</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:var(--sp-4);margin-bottom:var(--sp-12)">
+      <button class="btn btn--primary btn--magnetic">Primary</button>
+      <button class="btn btn--secondary btn--magnetic">Secondary</button>
+      <button class="btn btn--ghost btn--magnetic">Ghost</button>
+      <button class="btn btn--tertiary btn--magnetic">Tertiary</button>
+    </div>
+
+    <!-- Tilt cards -->
+    <h3 class="text-label-caps" style="color:var(--color-secondary);margin-bottom:var(--sp-4)">3D Tilt Cards — move mouse within each card</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:var(--sp-6);margin-bottom:var(--sp-12)">
+      <div class="glass-panel tilt-card" style="padding:var(--sp-8)">
+        <div class="text-label-caps" style="color:var(--color-text-muted);margin-bottom:var(--sp-3)">Standard</div>
+        <div class="text-title" style="color:var(--color-text-primary);margin-bottom:var(--sp-2)">glass-panel</div>
+        <p class="text-label text-muted">Hover — I tilt in 3D space.</p>
+      </div>
+      <div class="glass-panel glass-panel--shimmer tilt-card" style="padding:var(--sp-8)">
+        <div class="text-label-caps" style="color:var(--color-text-muted);margin-bottom:var(--sp-3)">Shimmer</div>
+        <div class="text-title" style="color:var(--color-text-primary);margin-bottom:var(--sp-2)">+ shimmer</div>
+        <p class="text-label text-muted">Light sweeps across on hover.</p>
+      </div>
+      <div class="glass-panel glow-border tilt-card" style="padding:var(--sp-8)">
+        <div class="text-label-caps" style="color:var(--color-text-muted);margin-bottom:var(--sp-3)">Glow Border</div>
+        <div class="text-title" style="color:var(--color-text-primary);margin-bottom:var(--sp-2)">+ glow-border</div>
+        <p class="text-label text-muted">Gradient halo appears on hover.</p>
+      </div>
+      <div class="glass-panel glass-panel--shimmer glow-border tilt-card" style="padding:var(--sp-8)">
+        <div class="text-label-caps" style="color:var(--color-text-muted);margin-bottom:var(--sp-3)">All Effects</div>
+        <div class="text-title" style="color:var(--color-text-primary);margin-bottom:var(--sp-2)">Tilt + Shimmer + Glow</div>
+        <p class="text-label text-muted">The full premium treatment.</p>
+      </div>
+    </div>
+
+    <!-- Scroll reveals -->
+    <h3 class="text-label-caps" style="color:var(--color-secondary);margin-bottom:var(--sp-4)">Scroll Reveals — elements fade up as you scroll</h3>
+    <div style="margin-bottom:var(--sp-12)">
+      <div class="reveal glass-panel" style="padding:var(--sp-6) var(--sp-8);border-radius:var(--radius-xl);margin-bottom:var(--sp-4)">
+        <span class="text-label" style="color:var(--color-text)">First reveal — no delay. <span class="text-mono text-subtle">.reveal</span></span>
+      </div>
+      <div class="reveal glass-panel" data-reveal-delay="150" style="padding:var(--sp-6) var(--sp-8);border-radius:var(--radius-xl);margin-bottom:var(--sp-4)">
+        <span class="text-label" style="color:var(--color-text)">Second reveal — 150ms stagger. <span class="text-mono text-subtle">data-reveal-delay="150"</span></span>
+      </div>
+      <div class="reveal glass-panel" data-reveal-delay="300" style="padding:var(--sp-6) var(--sp-8);border-radius:var(--radius-xl);margin-bottom:var(--sp-4)">
+        <span class="text-label" style="color:var(--color-text)">Third reveal — 300ms stagger. <span class="text-mono text-subtle">data-reveal-delay="300"</span></span>
+      </div>
+      <div class="reveal reveal--left glass-panel" data-reveal-delay="450" style="padding:var(--sp-6) var(--sp-8);border-radius:var(--radius-xl)">
+        <span class="text-label" style="color:var(--color-text)">Slides in from left. <span class="text-mono text-subtle">.reveal--left</span></span>
+      </div>
+    </div>
+
+    <!-- Floating -->
+    <h3 class="text-label-caps" style="color:var(--color-secondary);margin-bottom:var(--sp-4)">Floating Elements — continuous subtle bob</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:var(--sp-8);align-items:flex-end;margin-bottom:var(--sp-12)">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:var(--sp-3)">
+        <div class="floating glass-panel" style="width:80px;height:80px;border-radius:var(--radius-xl);display:grid;place-items:center;font-size:2rem">🌿</div>
+        <span class="text-mono" style="font-size:0.65rem;color:var(--color-text-subtle)">.floating</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:var(--sp-3)">
+        <div class="floating floating--slow glass-panel" style="width:80px;height:80px;border-radius:var(--radius-xl);display:grid;place-items:center;font-size:2rem">🪔</div>
+        <span class="text-mono" style="font-size:0.65rem;color:var(--color-text-subtle)">--slow</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:var(--sp-3)">
+        <div class="floating floating--fast glass-panel" style="width:80px;height:80px;border-radius:var(--radius-xl);display:grid;place-items:center;font-size:2rem">📚</div>
+        <span class="text-mono" style="font-size:0.65rem;color:var(--color-text-subtle)">--fast</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:var(--sp-3)">
+        <div class="floating" style="width:60px;height:60px;border-radius:var(--radius-full);background:var(--color-secondary-container);display:grid;place-items:center">
+          <span class="material-symbols-outlined" style="color:var(--color-secondary)">auto_stories</span>
+        </div>
+        <span class="text-mono" style="font-size:0.65rem;color:var(--color-text-subtle)">any element</span>
+      </div>
+    </div>
+
+    <!-- Stagger list -->
+    <h3 class="text-label-caps" style="color:var(--color-secondary);margin-bottom:var(--sp-4)">Stagger List — children auto-stagger on scroll</h3>
+    <div class="reveal-list" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:var(--sp-3);margin-bottom:var(--sp-12)">
+      <div class="glass-panel" style="padding:var(--sp-5);border-radius:var(--radius-lg)"><div class="text-label" style="color:var(--color-text)">Item 1</div></div>
+      <div class="glass-panel" style="padding:var(--sp-5);border-radius:var(--radius-lg)"><div class="text-label" style="color:var(--color-text)">Item 2</div></div>
+      <div class="glass-panel" style="padding:var(--sp-5);border-radius:var(--radius-lg)"><div class="text-label" style="color:var(--color-text)">Item 3</div></div>
+      <div class="glass-panel" style="padding:var(--sp-5);border-radius:var(--radius-lg)"><div class="text-label" style="color:var(--color-text)">Item 4</div></div>
+      <div class="glass-panel" style="padding:var(--sp-5);border-radius:var(--radius-lg)"><div class="text-label" style="color:var(--color-text)">Item 5</div></div>
+      <div class="glass-panel" style="padding:var(--sp-5);border-radius:var(--radius-lg)"><div class="text-label" style="color:var(--color-text)">Item 6</div></div>
+    </div>
+
+    <!-- Counter -->
+    <h3 class="text-label-caps" style="color:var(--color-secondary);margin-bottom:var(--sp-4)">Counter Animation — animates when scrolled into view</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:var(--sp-8);margin-bottom:var(--sp-12)">
+      <div class="glass-panel" style="padding:var(--sp-8) var(--sp-10);border-radius:var(--radius-xl);text-align:center;min-width:140px">
+        <div class="text-display-md gradient-text" style="margin-bottom:var(--sp-2)">
+          <span class="count-up" data-target="128">0</span>
+        </div>
+        <div class="text-label-caps text-subtle">Lessons</div>
+      </div>
+      <div class="glass-panel" style="padding:var(--sp-8) var(--sp-10);border-radius:var(--radius-xl);text-align:center;min-width:140px">
+        <div class="text-display-md gradient-text" style="margin-bottom:var(--sp-2)">
+          <span class="count-up" data-target="4200" data-suffix="+">0</span>
+        </div>
+        <div class="text-label-caps text-subtle">Learners</div>
+      </div>
+      <div class="glass-panel" style="padding:var(--sp-8) var(--sp-10);border-radius:var(--radius-xl);text-align:center;min-width:140px">
+        <div class="text-display-md gradient-text" style="margin-bottom:var(--sp-2)">
+          <span class="count-up" data-target="98" data-suffix="%">0</span>
+        </div>
+        <div class="text-label-caps text-subtle">Satisfaction</div>
+      </div>
+    </div>
+
+    <!-- Pulse dot -->
+    <h3 class="text-label-caps" style="color:var(--color-secondary);margin-bottom:var(--sp-4)">Live Indicators</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:var(--sp-6);align-items:center;margin-bottom:var(--sp-12)">
+      <div style="display:flex;align-items:center;gap:var(--sp-2)">
+        <span class="pulse-dot"></span>
+        <span class="text-label-caps" style="color:var(--color-secondary)">Active now</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:var(--sp-2)">
+        <span class="pulse-dot pulse-dot--primary"></span>
+        <span class="text-label-caps" style="color:var(--color-primary)">Primary</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:var(--sp-2)">
+        <span class="pulse-dot pulse-dot--error"></span>
+        <span class="text-label-caps" style="color:var(--color-error)">Error state</span>
+      </div>
+    </div>
+
+    <!-- Text effects -->
+    <h3 class="text-label-caps" style="color:var(--color-secondary);margin-bottom:var(--sp-4)">Text Effects</h3>
+    <div style="display:flex;flex-direction:column;gap:var(--sp-6)">
+      <div>
+        <div class="text-label-caps text-subtle" style="margin-bottom:var(--sp-2)">.gradient-text</div>
+        <div class="text-display-md gradient-text">ಸುಗಮ — SugamaPath</div>
+      </div>
+      <div>
+        <div class="text-label-caps text-subtle" style="margin-bottom:var(--sp-2)">.gradient-text--warm</div>
+        <div class="text-display-md gradient-text--warm">Learn Kannada</div>
+      </div>
+      <div>
+        <div class="text-label-caps text-subtle" style="margin-bottom:var(--sp-2)">.glow-text</div>
+        <div class="text-display-md glow-text" style="color:var(--color-primary)">Shine Bright</div>
+      </div>
+      <div>
+        <div class="text-label-caps text-subtle" style="margin-bottom:var(--sp-2)">.glow-text--secondary</div>
+        <div class="text-display-md glow-text--secondary" style="color:var(--color-secondary)">Mint Glow</div>
+      </div>
+    </div>
+
+    <!-- Skeleton -->
+    <h3 class="text-label-caps" style="color:var(--color-secondary);margin:var(--sp-12) 0 var(--sp-4)">Skeleton Loading</h3>
+    <div style="display:flex;flex-direction:column;gap:var(--sp-3);max-width:400px">
+      <div class="skeleton" style="height:20px;width:60%"></div>
+      <div class="skeleton" style="height:14px;width:100%"></div>
+      <div class="skeleton" style="height:14px;width:85%"></div>
+      <div class="skeleton" style="height:14px;width:72%"></div>
+    </div>
+
+    <!-- Entrance animations -->
+    <h3 class="text-label-caps" style="color:var(--color-secondary);margin:var(--sp-12) 0 var(--sp-4)">Entrance Animations</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:var(--sp-4)">
+      <button class="btn btn--ghost" id="demo-slide-up">slide-up</button>
+      <button class="btn btn--ghost" id="demo-scale-in">scale-in</button>
+      <button class="btn btn--ghost" id="demo-fade-in">fade-in</button>
+    </div>
+    <div id="entrance-demo" style="margin-top:var(--sp-6);min-height:80px"></div>
+    <script>
+      ['slide-up', 'scale-in', 'fade-in'].forEach(name => {
+        document.getElementById('demo-' + name)?.addEventListener('click', () => {
+          const demo = document.getElementById('entrance-demo');
+          demo.innerHTML = '';
+          const box = document.createElement('div');
+          box.className = 'glass-panel animate-' + name;
+          box.style.cssText = 'padding:var(--sp-5) var(--sp-6);border-radius:var(--radius-xl);max-width:320px';
+          box.innerHTML = `<span class="text-label" style="color:var(--color-text)">.animate-${name} triggered</span>`;
+          demo.appendChild(box);
+        });
+      });
+    </script>
+
+  </section>
 </main>
 
 <script>
@@ -755,6 +950,7 @@
     if (e.key === 'h' || e.key === 'H') setTheme('hc');
   });
 </script>
+<script src="js/motion.js"></script>
 
 </body>
 </html>
