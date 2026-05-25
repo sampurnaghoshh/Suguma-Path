@@ -3,584 +3,562 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"
-    content="SugamaPath — An accessible language learning platform designed for neurodivergent learners. Read better with dyslexia-friendly tools. Learn Kannada and other Indian regional languages at your own pace." />
+  <meta name="description" content="SugamaPath — accessible reading and Kannada language learning, built for neurodivergent learners. Read your way. Learn your city." />
+  <title>SugamaPath — Read your way. Learn your city.</title>
 
-  <title>SugamaPath — Accessible Language Learning</title>
+  <!-- Restore theme before first paint -->
+  <script>
+    (function () {
+      var stored = localStorage.getItem('sugamapath_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', stored);
+      if (localStorage.getItem('sugamapath_dyslexic') === 'true') {
+        document.documentElement.classList.add('font-dyslexic');
+      }
+    })();
+  </script>
 
-  <!-- Preconnect to Google Fonts for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-  <!-- Settings script runs first — applies theme/font before paint to prevent flash -->
-  <script src="js/settings.js"></script>
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/global.css" />
-  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/design-tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/motion.css" />
+  <link rel="stylesheet" href="css/landing.css" />
 </head>
-<body>
+<body class="mesh-bg">
 
-  <!-- Skip navigation for keyboard users -->
-  <a class="skip-nav" href="#main-content">Skip to main content</a>
+  <!-- Skip nav -->
+  <a class="skip-nav" href="#main">Skip to main content</a>
 
-  <!-- ======================================================================
-       Navigation
-       ====================================================================== -->
-  <header>
-    <nav class="nav" aria-label="Main navigation">
-      <div class="container">
-        <div class="nav__inner">
+  <!-- ── Navigation ─────────────────────────────────────────────── -->
+  <nav class="landing-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="SugamaPath home">
+        <svg class="nav-logo__icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 3C9.373 3 4 8.373 4 15c0 4.015 1.888 7.595 4.828 9.9L16 29l7.172-4.1C26.112 22.595 28 19.015 28 15c0-6.627-5.373-12-12-12z" fill="currentColor" opacity="0.15"/>
+          <path d="M16 7c-4.418 0-8 3.582-8 8 0 2.652 1.289 5.007 3.278 6.487L16 24l4.722-2.513C22.711 20.007 24 17.652 24 15c0-4.418-3.582-8-8-8z" fill="currentColor" opacity="0.4"/>
+          <path d="M16 11a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" fill="currentColor"/>
+          <path d="M16 3v2M16 27v2M3 15h2M27 15h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+        </svg>
+        <span class="nav-logo__name">SugamaPath</span>
+      </a>
 
-          <!-- Logo -->
-          <a href="index.html" class="nav__logo" aria-label="SugamaPath home">
-            <span class="nav__logo-icon" aria-hidden="true">🌿</span>
-            Sugama<span>Path</span>
-          </a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="reading.html">Reading</a></li>
+        <li><a href="learn.html">Learn Kannada</a></li>
+        <li><a href="dashboard.html">Progress</a></li>
+        <li><a href="settings.html">Settings</a></li>
+      </ul>
 
-          <!-- Mobile hamburger -->
-          <button
-            class="nav__toggle"
-            aria-controls="nav-links"
-            aria-expanded="false"
-            aria-label="Toggle navigation menu"
-          >
-            <!-- Hamburger icon (SVG) -->
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-              <rect y="4"  width="22" height="2.5" rx="1.25" fill="currentColor"/>
-              <rect y="10" width="22" height="2.5" rx="1.25" fill="currentColor"/>
-              <rect y="16" width="22" height="2.5" rx="1.25" fill="currentColor"/>
-            </svg>
-          </button>
-
-          <!-- Nav links — text-only, no emoji -->
-          <ul class="nav__links" id="nav-links" role="list">
-            <li><a href="index.html"     class="nav__link" aria-current="page">Home</a></li>
-            <li><a href="reading.html"   class="nav__link">Reading</a></li>
-            <li><a href="learn.html"     class="nav__link">Learn</a></li>
-            <li><a href="dashboard.html" class="nav__link">Progress</a></li>
-            <li><a href="settings.html"  class="nav__link">Settings</a></li>
-          </ul>
-
-        </div>
+      <div class="nav-actions">
+        <button class="nav-icon-btn" id="btn-dyslexic" aria-label="Enable dyslexic font" aria-pressed="false" title="Toggle dyslexic font">
+          <span class="material-symbols-outlined">font_download</span>
+        </button>
+        <button class="nav-icon-btn" id="btn-theme" aria-label="Switch to light theme" title="Switch theme (Dark / Light / High Contrast)">
+          <span class="material-symbols-outlined" id="theme-icon">dark_mode</span>
+        </button>
+        <a href="reading.html" class="btn btn--secondary btn--magnetic">Try SugamaPath</a>
       </div>
-    </nav>
-  </header>
 
-  <!-- ======================================================================
-       Main Content
-       ====================================================================== -->
-  <main id="main-content">
+      <button class="nav-icon-btn nav-menu-btn" id="btn-nav-menu" aria-label="Open navigation menu" aria-expanded="false">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </nav>
 
-    <!-- ==================================================================
-         Hero Section
-         ================================================================== -->
-    <section class="hero" aria-labelledby="hero-heading">
-      <div class="container">
-        <div class="hero__inner">
+  <!-- ── Main ───────────────────────────────────────────────────── -->
+  <main id="main">
 
-          <!-- Left: Text content -->
-          <div class="hero__content">
-            <div class="hero__eyebrow">Designed for every mind</div>
+    <!-- ── Hero ──────────────────────────────────────────────────── -->
+    <section class="hero" aria-labelledby="hero-headline">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-bg__gradient"></div>
+        <div class="hero-bg__grid"></div>
+      </div>
 
-            <h1 id="hero-heading" class="hero__title">
-              Learn and read
-              <span class="hero__title-accent">your way.</span>
-            </h1>
-
-            <p class="hero__subtitle">
-              SugamaPath is a calm, patient platform for neurodivergent learners.
-              Reformat any text for comfortable reading, or learn Kannada script
-              and vocabulary — no timers, no judgment, at your own pace.
-            </p>
-
-            <div class="hero__actions">
-              <a href="reading.html" class="btn btn--primary btn--large">Open Reading Tool</a>
-              <a href="learn.html"   class="btn btn--text   btn--large">Learn Kannada →</a>
-            </div>
-
-            <p class="hero__note">
-              <span>Free to use</span>
-              <span class="hero__note-dot" aria-hidden="true"></span>
-              <span>No account needed</span>
-              <span class="hero__note-dot" aria-hidden="true"></span>
-              <span>Settings saved on your device</span>
-            </p>
-
-            <!-- Pull-quote testimonial -->
-            <figure class="hero__testimonial">
-              <blockquote class="hero__testimonial-quote">
-                "For the first time, reading doesn't feel like a chore.
-                The spacing controls alone changed everything for me."
-              </blockquote>
-              <figcaption class="hero__testimonial-attr">
-                <span class="hero__testimonial-avatar" aria-hidden="true">R</span>
-                <span>Riya, 24 — dyslexia advocate</span>
-              </figcaption>
-            </figure>
-
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <div class="hero-eyebrow reveal">
+            <span class="hero-eyebrow__dot" aria-hidden="true"></span>
+            <span class="hero-eyebrow__text">Reading &amp; Language, Reimagined</span>
           </div>
 
-          <!-- Right: Editorial Kannada character card -->
-          <div class="hero__visual" aria-hidden="true">
-            <div class="hero-editorial">
+          <h1 id="hero-headline" class="hero-headline reveal" data-reveal-delay="80">
+            Read your way.<br>
+            Learn <em class="gradient-text">your city.</em>
+          </h1>
 
-              <!-- Large Kannada vowel "ಅ" — the star -->
-              <div class="hero-editorial__glyph-area">
-                <div class="hero-editorial__glyph">ಅ</div>
-                <div class="hero-editorial__phoneme">/ə/ · a</div>
-              </div>
-
-              <!-- Reference metadata — editorial, precise -->
-              <div class="hero-editorial__table">
-                <div class="hero-editorial__row">
-                  <span class="hero-editorial__row-label">Script</span>
-                  <span class="hero-editorial__row-value">Kannada · ಕನ್ನಡ</span>
-                </div>
-                <div class="hero-editorial__row">
-                  <span class="hero-editorial__row-label">Character</span>
-                  <span class="hero-editorial__row-value">First vowel (Swara)</span>
-                </div>
-                <div class="hero-editorial__row">
-                  <span class="hero-editorial__row-label">Sounds like</span>
-                  <span class="hero-editorial__row-value">"a" in <em>about</em></span>
-                </div>
-                <div class="hero-editorial__row">
-                  <span class="hero-editorial__row-label">Family</span>
-                  <span class="hero-editorial__row-value">Dravidian · South Indian</span>
-                </div>
-              </div>
-
-              <!-- Classification tags -->
-              <div class="hero-editorial__tags">
-                <span class="hero-editorial__tag hero-editorial__tag--active">Vowel</span>
-                <span class="hero-editorial__tag">Swara (ಸ್ವರ)</span>
-                <span class="hero-editorial__tag">Lesson 1</span>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================================================================
-         Two Modes Section
-         ================================================================== -->
-    <section class="modes section" aria-labelledby="modes-heading">
-      <div class="container">
-        <div class="modes__header">
-          <h2 id="modes-heading" class="heading-section">Two tools. One platform.</h2>
-          <p class="body-large">
-            Switch freely between reading support and language learning.
-            Your settings and progress travel with you everywhere.
+          <p class="hero-subtitle reveal" data-reveal-delay="160">
+            SugamaPath adapts to <em>how your brain reads</em> — adjustable fonts,
+            spacing, colours, and audio. Learn Kannada through the words of Bengaluru:
+            street names, markets, everyday greetings.
           </p>
-        </div>
 
-        <div class="modes__grid">
-
-          <!-- Reading Mode Card -->
-          <a href="reading.html" class="mode-card mode-card--read card card--interactive reveal" aria-label="Go to Reading Tool">
-            <div>
-              <div class="mode-card__icon" aria-hidden="true">
-                <!-- Lines / text icon -->
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round">
-                  <path d="M4 6h16M4 11h16M4 16h10"/>
-                </svg>
-              </div>
-            </div>
-            <div class="mode-card__tag">Reading Tool</div>
-            <h3 class="mode-card__title">Read any text, your way</h3>
-            <p class="mode-card__desc">
-              Paste text or a URL and instantly reformat it with fonts, spacing,
-              and colours tuned for how your brain works. Listen along with
-              highlighted word-by-word text-to-speech.
-            </p>
-            <ul class="mode-card__features" role="list" aria-label="Reading tool features">
-              <li class="mode-card__feature">OpenDyslexic & Lexend font toggle</li>
-              <li class="mode-card__feature">Line focus & bionic reading modes</li>
-              <li class="mode-card__feature">Word-by-word text-to-speech</li>
-              <li class="mode-card__feature">Letter, line & word spacing sliders</li>
-              <li class="mode-card__feature">Cream, dark & high-contrast themes</li>
-            </ul>
-            <span class="mode-card__cta" aria-hidden="true">
-              Open Reading Tool
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-          </a>
-
-          <!-- Learn Mode Card -->
-          <a href="learn.html" class="mode-card mode-card--learn card card--interactive reveal" aria-label="Go to Language Learning">
-            <div>
-              <div class="mode-card__icon" aria-hidden="true">
-                <!-- Graduation / language icon -->
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                  <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
-                </svg>
-              </div>
-            </div>
-            <div class="mode-card__tag">Language Learning</div>
-            <h3 class="mode-card__title">Speak Kannada for real life</h3>
-            <p class="mode-card__desc">
-              From auto rickshaw negotiations to ordering dosas — learn what
-              locals actually say. Six practical survival modules, then bonus
-              alphabet lessons when you're ready to read signs.
-            </p>
-            <ul class="mode-card__features" role="list" aria-label="Learning features">
-              <li class="mode-card__feature">Real survival phrases for daily life in Karnataka</li>
-              <li class="mode-card__feature">Auto rickshaw, restaurant, shopping &amp; emergency scenarios</li>
-              <li class="mode-card__feature">Pronunciation audio + flashcards</li>
-              <li class="mode-card__feature">Bonus alphabet lessons when you're ready to read signs</li>
-            </ul>
-            <span class="mode-card__cta" aria-hidden="true">
-              Start Learning
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-          </a>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================================================================
-         Accessibility Features Grid
-         ================================================================== -->
-    <section class="features section section--alt" aria-labelledby="features-heading">
-      <div class="container">
-        <div class="features__header reveal">
-          <h2 id="features-heading" class="heading-section">Built for accessibility, first</h2>
-          <p class="body-large">
-            Every feature is here because someone needed it. Nothing is an afterthought.
-          </p>
-        </div>
-
-        <div class="features__grid" role="list" aria-label="Accessibility features">
-
-          <article class="feature-item reveal" role="listitem">
-            <div class="feature-item__top">
-              <span class="feature-item__num" aria-hidden="true">01</span>
-              <svg class="feature-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/>
-              </svg>
-            </div>
-            <h3 class="feature-item__title">Dyslexia-friendly fonts</h3>
-            <p class="feature-item__desc">
-              Toggle between OpenDyslexic (weighted bottoms reduce rotation errors)
-              and Lexend (designed to reduce visual stress) at any time.
-            </p>
-          </article>
-
-          <article class="feature-item reveal" role="listitem">
-            <div class="feature-item__top">
-              <span class="feature-item__num" aria-hidden="true">02</span>
-              <svg class="feature-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M3 8h18M3 16h18"/><circle cx="8" cy="8" r="2.5" fill="currentColor" stroke="none"/><circle cx="16" cy="16" r="2.5" fill="currentColor" stroke="none"/>
-              </svg>
-            </div>
-            <h3 class="feature-item__title">Full spacing control</h3>
-            <p class="feature-item__desc">
-              Adjust letter spacing, word spacing, line height, and font size
-              with live sliders. Persisted across sessions.
-            </p>
-          </article>
-
-          <article class="feature-item reveal" role="listitem">
-            <div class="feature-item__top">
-              <span class="feature-item__num" aria-hidden="true">03</span>
-              <svg class="feature-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/>
-              </svg>
-            </div>
-            <h3 class="feature-item__title">Word-by-word TTS</h3>
-            <p class="feature-item__desc">
-              Text-to-speech highlights each word as it's spoken. Adjustable
-              rate and pitch. Supports multiple browser voices.
-            </p>
-          </article>
-
-          <article class="feature-item reveal" role="listitem">
-            <div class="feature-item__top">
-              <span class="feature-item__num" aria-hidden="true">04</span>
-              <svg class="feature-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M4 7h12" opacity="0.35"/><rect x="3" y="10" width="18" height="4" rx="1"/><path d="M4 17h10" opacity="0.35"/>
-              </svg>
-            </div>
-            <h3 class="feature-item__title">Line focus mode</h3>
-            <p class="feature-item__desc">
-              Dims every line except the one you're reading — helps with
-              attention difficulties and tracking on long pages.
-            </p>
-          </article>
-
-          <article class="feature-item reveal" role="listitem">
-            <div class="feature-item__top">
-              <span class="feature-item__num" aria-hidden="true">05</span>
-              <svg class="feature-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>
-              </svg>
-            </div>
-            <h3 class="feature-item__title">Bionic reading</h3>
-            <p class="feature-item__desc">
-              Bolds the first half of every word so your eye anchors faster.
-              Reduces the cognitive load of decoding unfamiliar words.
-            </p>
-          </article>
-
-          <article class="feature-item reveal" role="listitem">
-            <div class="feature-item__top">
-              <span class="feature-item__num" aria-hidden="true">06</span>
-              <svg class="feature-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-              </svg>
-            </div>
-            <h3 class="feature-item__title">Three colour themes</h3>
-            <p class="feature-item__desc">
-              Warm cream (default), dark mode for low light, and a
-              high-contrast mode (yellow-on-black) for visual impairments.
-            </p>
-          </article>
-
-          <article class="feature-item reveal" role="listitem">
-            <div class="feature-item__top">
-              <span class="feature-item__num" aria-hidden="true">07</span>
-              <svg class="feature-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="2" y="6" width="20" height="13" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/>
-              </svg>
-            </div>
-            <h3 class="feature-item__title">Full keyboard navigation</h3>
-            <p class="feature-item__desc">
-              Every interactive element is reachable by Tab. ARIA labels
-              throughout for screen reader compatibility.
-            </p>
-          </article>
-
-          <article class="feature-item reveal" role="listitem">
-            <div class="feature-item__top">
-              <span class="feature-item__num" aria-hidden="true">08</span>
-              <svg class="feature-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="7" y="2" width="10" height="20" rx="2"/><path d="M12 17.5v.5"/>
-              </svg>
-            </div>
-            <h3 class="feature-item__title">Mobile-first design</h3>
-            <p class="feature-item__desc">
-              Reads beautifully on any screen size. Large tap targets, readable
-              font sizes, and touch-friendly controls.
-            </p>
-          </article>
-
-          <article class="feature-item reveal" role="listitem">
-            <div class="feature-item__top">
-              <span class="feature-item__num" aria-hidden="true">09</span>
-              <svg class="feature-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-              </svg>
-            </div>
-            <h3 class="feature-item__title">AI-powered simplification</h3>
-            <p class="feature-item__desc">
-              Turn dense textbooks, articles, syllabus PDFs, or pasted content
-              into language you can actually understand. Choose your reading level.
-            </p>
-          </article>
-
-          <article class="feature-item reveal" role="listitem">
-            <div class="feature-item__top">
-              <span class="feature-item__num" aria-hidden="true">10</span>
-              <svg class="feature-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                <polyline points="14 2 14 8 20 8"/>
-                <line x1="16" y1="13" x2="8" y2="13"/>
-                <line x1="16" y1="17" x2="8" y2="17"/>
-                <line x1="10" y1="9" x2="8" y2="9"/>
-              </svg>
-            </div>
-            <h3 class="feature-item__title">Upload your textbooks</h3>
-            <p class="feature-item__desc">
-              Drop in lecture slides, syllabus PDFs, or research papers. Extract
-              clean text and read with all SugamaPath features.
-            </p>
-          </article>
-
-          <article class="feature-item reveal" role="listitem">
-            <div class="feature-item__top">
-              <span class="feature-item__num" aria-hidden="true">11</span>
-              <svg class="feature-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 8l6 6"/><path d="M4 14l6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/>
-                <path d="M22 22l-5-10-5 10"/><path d="M14 18h6"/>
-              </svg>
-            </div>
-            <h3 class="feature-item__title">Read in your language</h3>
-            <p class="feature-item__desc">
-              Translate any content into Hindi, Kannada, Tamil, and 17 other languages
-              with one click — after simplification if you want both.
-            </p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================================================================
-         Mission Section
-         ================================================================== -->
-    <section class="mission" aria-labelledby="mission-heading">
-      <div class="container">
-        <div class="mission__inner">
-
-          <!-- Left: Mission copy -->
-          <div class="mission__text">
-            <p class="mission__eyebrow">Our mission</p>
-            <h2 id="mission-heading" class="mission__heading">
-              Every learner deserves tools that meet them where they are.
-            </h2>
-            <p class="mission__body mission__body--lead">
-              SugamaPath ("sugama" means <em>comfortable</em> or <em>easy</em> in Kannada)
-              started from a simple belief: reading and language learning tools built
-              for neurotypical people are not built for everyone. We're changing that —
-              one accessible feature at a time.
-            </p>
-            <p class="mission__body">
-              We're starting with Kannada. More Indian regional languages are coming.
-            </p>
-            <div class="mission__languages" role="list" aria-label="Supported and upcoming languages">
-              <span class="mission__lang-tag mission__lang-tag--active" role="listitem">
-                ✅ Kannada
-              </span>
-              <span class="mission__lang-tag" role="listitem" aria-label="Tamil — coming soon">
-                Tamil (soon)
-              </span>
-              <span class="mission__lang-tag" role="listitem" aria-label="Hindi — coming soon">
-                Hindi (soon)
-              </span>
-              <span class="mission__lang-tag" role="listitem" aria-label="Bengali — coming soon">
-                Bengali (soon)
-              </span>
-            </div>
-          </div>
-
-          <!-- Right: Pull quote -->
-          <blockquote class="mission__quote">
-            <div class="mission__quote-mark" aria-hidden="true">"</div>
-            <p class="mission__quote-text">
-              Learning should feel like walking a comfortable path — not climbing
-              a wall built for someone else's body.
-            </p>
-            <footer class="mission__quote-attr">
-              — The SugamaPath principle
-            </footer>
-          </blockquote>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================================================================
-         CTA Banner
-         ================================================================== -->
-    <section class="cta-banner" aria-labelledby="cta-heading">
-      <div class="container">
-        <div class="cta-banner__inner">
-          <h2 id="cta-heading" class="cta-banner__title">Ready to begin?</h2>
-          <p class="cta-banner__subtitle">
-            No sign-up. No subscription. Your progress and preferences are
-            stored right on your device.
-          </p>
-          <div class="cta-banner__actions">
-            <a href="reading.html" class="btn btn--accent btn--large">
-              Open Reading Tool
+          <div class="hero-actions reveal" data-reveal-delay="240">
+            <a href="reading.html" class="btn btn--primary btn--large btn--magnetic">
+              <span class="material-symbols-outlined filled">auto_stories</span>
+              Start Reading
             </a>
-            <a href="learn.html" class="btn btn--ghost btn--large">
+            <a href="learn.html" class="btn btn--ghost btn--large btn--magnetic">
+              <span class="material-symbols-outlined">translate</span>
               Learn Kannada
             </a>
-            <a href="settings.html" class="btn btn--ghost btn--large">
-              Adjust Accessibility
+          </div>
+
+          <div class="hero-trust reveal" data-reveal-delay="320">
+            <span class="hero-trust__text">Free to use</span>
+            <span class="hero-trust__divider" aria-hidden="true"></span>
+            <span class="hero-trust__text">No sign-up needed</span>
+            <span class="hero-trust__divider" aria-hidden="true"></span>
+            <span class="hero-trust__text">Built for accessibility</span>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-glyph-card glass-panel glass-panel--shimmer floating">
+            <div class="hero-glyph-card__kannada">ನಮಸ್ಕಾರ</div>
+            <div class="hero-glyph-card__roman">Namaskāra</div>
+            <div class="hero-glyph-card__meaning">Hello / Greetings</div>
+          </div>
+          <span class="hero-orbit hero-orbit--1">ಕ</span>
+          <span class="hero-orbit hero-orbit--2">ಬ</span>
+          <span class="hero-orbit hero-orbit--3">ಮ</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Dual Pillars ───────────────────────────────────────────── -->
+    <section class="pillars" aria-labelledby="pillars-headline">
+      <div class="pillars-inner">
+        <p class="section-eyebrow reveal">Two ways to grow</p>
+        <h2 id="pillars-headline" class="section-headline reveal" data-reveal-delay="80">
+          One platform, two journeys.
+        </h2>
+        <p class="section-subtext reveal" data-reveal-delay="160">
+          Whether you're working through a chapter or learning to say hello at a local market — SugamaPath has a path built for you.
+        </p>
+
+        <div class="pillars-grid">
+          <!-- Reading pillar -->
+          <article class="pillar-card glass-panel glass-panel--shimmer glow-border tilt-card reveal">
+            <div>
+              <div class="pillar-card__icon-wrap">
+                <span class="material-symbols-outlined filled">menu_book</span>
+              </div>
+            </div>
+            <div>
+              <p class="pillar-card__label">Pillar One</p>
+              <h3 class="pillar-card__title">Accessible Reading Studio</h3>
+              <p class="pillar-card__desc">
+                Upload any PDF and read it the way your brain prefers. Choose from dyslexic-friendly fonts,
+                adjust letter spacing and line height, switch colour overlays, and use built-in text-to-speech
+                with natural pacing. No two readers are the same.
+              </p>
+            </div>
+            <ul class="pillar-card__features" role="list">
+              <li class="pillar-card__feature">
+                <span class="material-symbols-outlined">check_circle</span>
+                OpenDyslexic &amp; custom font options
+              </li>
+              <li class="pillar-card__feature">
+                <span class="material-symbols-outlined">check_circle</span>
+                Colour overlays for visual stress
+              </li>
+              <li class="pillar-card__feature">
+                <span class="material-symbols-outlined">check_circle</span>
+                Line-by-line text-to-speech playback
+              </li>
+              <li class="pillar-card__feature">
+                <span class="material-symbols-outlined">check_circle</span>
+                AI word simplification on demand
+              </li>
+            </ul>
+          </article>
+
+          <!-- Kannada pillar -->
+          <article class="pillar-card pillar-card--kannada glass-panel glass-panel--shimmer glow-border tilt-card reveal" data-reveal-delay="120">
+            <div>
+              <div class="pillar-card__icon-wrap pillar-card__icon-wrap--tertiary">
+                <span class="material-symbols-outlined filled">translate</span>
+              </div>
+            </div>
+            <div>
+              <p class="pillar-card__label">Pillar Two</p>
+              <h3 class="pillar-card__title">Learn Kannada — ಕನ್ನಡ ಕಲಿಯಿರಿ</h3>
+              <p class="pillar-card__desc">
+                Start with real words you'll use in Bengaluru — not textbook abstractions.
+                Flashcard lessons teach greetings, directions, numbers, and the Kannada alphabet
+                through audio, transliteration, and short example sentences.
+              </p>
+            </div>
+            <ul class="pillar-card__features" role="list">
+              <li class="pillar-card__feature">
+                <span class="material-symbols-outlined">check_circle</span>
+                8 curated vocabulary lessons
+              </li>
+              <li class="pillar-card__feature">
+                <span class="material-symbols-outlined">check_circle</span>
+                Native-speaker audio via Web Speech API
+              </li>
+              <li class="pillar-card__feature">
+                <span class="material-symbols-outlined">check_circle</span>
+                3D flashcards with Kannada script
+              </li>
+              <li class="pillar-card__feature">
+                <span class="material-symbols-outlined">check_circle</span>
+                Quiz after every lesson
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── The Sugama Principle ───────────────────────────────────── -->
+    <section class="mission" aria-labelledby="mission-headline">
+      <div class="mission-inner">
+        <div class="mission-copy">
+          <p class="section-eyebrow reveal">The Sugama Principle</p>
+          <h2 id="mission-headline" class="section-headline reveal" data-reveal-delay="80">
+            "Sugama" means<br>
+            <span class="gradient-text">comfortable path.</span>
+          </h2>
+          <p class="reveal" data-reveal-delay="160">
+            Most reading tools are designed for neurotypical readers, then
+            retrofitted with accessibility as an afterthought. <strong>SugamaPath starts from the other end.</strong>
+            Every default — font, spacing, contrast, pacing — is chosen for the learner
+            who struggles most. Everyone else benefits too.
+          </p>
+          <p class="reveal" data-reveal-delay="240">
+            The Kannada module is rooted in the same philosophy: <strong>start with what's useful, not what's traditional.</strong>
+            You don't need to memorise conjugation tables before you can ask for directions on MG Road.
+            Learn the words that open doors first.
+          </p>
+          <div class="reveal" data-reveal-delay="320">
+            <a href="settings.html" class="btn btn--ghost btn--magnetic">
+              <span class="material-symbols-outlined">tune</span>
+              Customise your experience
             </a>
           </div>
         </div>
+
+        <div class="mission-visual">
+          <div class="mission-stat-card glass-panel floating reveal" data-reveal-delay="200">
+            <div class="mission-stat-card__number gradient-text">
+              <span class="count-up" data-target="1" data-duration="800">0</span>
+              in 5
+            </div>
+            <div class="mission-stat-card__label">
+              people are estimated to be dyslexic — yet most reading software ignores their needs
+            </div>
+          </div>
+          <div class="mission-stat-card glass-panel floating--slow reveal" data-reveal-delay="320">
+            <div class="mission-stat-card__number" style="color: var(--color-tertiary);">
+              <span class="count-up" data-target="44" data-suffix="M" data-duration="1000">0</span>
+            </div>
+            <div class="mission-stat-card__label">
+              Kannada speakers worldwide — one of the oldest living language traditions in the world
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Features ───────────────────────────────────────────────── -->
+    <section class="features" aria-labelledby="features-headline">
+      <div class="features-inner">
+        <div class="features-header">
+          <p class="section-eyebrow reveal">Built with intention</p>
+          <h2 id="features-headline" class="section-headline reveal" data-reveal-delay="80">
+            Every feature earns its place.
+          </h2>
+          <p class="section-subtext reveal" data-reveal-delay="160">
+            No bloat. No paywalls. No dark patterns. Just the tools that actually help.
+          </p>
+        </div>
+
+        <div class="features-grid reveal-list">
+          <div class="feature-card glass-panel">
+            <div class="feature-card__icon">
+              <span class="material-symbols-outlined filled">accessibility_new</span>
+            </div>
+            <h3 class="feature-card__title">Neurodivergent-First Design</h3>
+            <p class="feature-card__desc">
+              Font, spacing, contrast, and layout controls are front and centre — not buried in menus.
+              Profiles save your preferences so you never have to reconfigure.
+            </p>
+          </div>
+
+          <div class="feature-card feature-card--purple glass-panel">
+            <div class="feature-card__icon">
+              <span class="material-symbols-outlined filled">record_voice_over</span>
+            </div>
+            <h3 class="feature-card__title">Audio Pronunciation</h3>
+            <p class="feature-card__desc">
+              Every Kannada word is spoken aloud with correct tonal cues. The Web Speech API
+              prioritises Kannada voices, falling back gracefully so you always hear the word.
+            </p>
+          </div>
+
+          <div class="feature-card feature-card--amber glass-panel">
+            <div class="feature-card__icon">
+              <span class="material-symbols-outlined filled">auto_fix_high</span>
+            </div>
+            <h3 class="feature-card__title">AI That Helps, Not Overwhelms</h3>
+            <p class="feature-card__desc">
+              Tap any difficult word while reading and get a plain-language explanation —
+              no pop-up walls, no subscriptions. The AI serves the reader, not the other way around.
+            </p>
+          </div>
+
+          <div class="feature-card glass-panel">
+            <div class="feature-card__icon">
+              <span class="material-symbols-outlined filled">quiz</span>
+            </div>
+            <h3 class="feature-card__title">Spaced Flashcard Quizzes</h3>
+            <p class="feature-card__desc">
+              After each Kannada lesson, a short five-question quiz reinforces what you've learned.
+              Three question types keep it varied; scores save automatically to track progress.
+            </p>
+          </div>
+
+          <div class="feature-card feature-card--purple glass-panel">
+            <div class="feature-card__icon">
+              <span class="material-symbols-outlined filled">contrast</span>
+            </div>
+            <h3 class="feature-card__title">Three Visual Themes</h3>
+            <p class="feature-card__desc">
+              Dark cinematic, light sage, and high-contrast yellow-on-black. Cycle through them
+              in one click. Your choice persists across sessions — no re-selecting every time.
+            </p>
+          </div>
+
+          <div class="feature-card feature-card--amber glass-panel">
+            <div class="feature-card__icon">
+              <span class="material-symbols-outlined filled">trending_up</span>
+            </div>
+            <h3 class="feature-card__title">Progress That Sticks</h3>
+            <p class="feature-card__desc">
+              Lesson completion, quiz scores, and "known" words are saved to your browser.
+              Pick up exactly where you left off — no account required, no data sent anywhere.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Stats Bar ──────────────────────────────────────────────── -->
+    <div class="stats-bar" aria-label="Quick facts about SugamaPath">
+      <div class="stats-bar-inner">
+        <div class="stat-item">
+          <div class="stat-item__number">
+            <span class="count-up" data-target="8" data-duration="900">0</span>
+          </div>
+          <div class="stat-item__label">Kannada lessons</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item__number">
+            <span class="count-up" data-target="100" data-suffix="+" data-duration="1100">0</span>
+          </div>
+          <div class="stat-item__label">Vocabulary words</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item__number">
+            <span class="count-up" data-target="3" data-duration="700">0</span>
+          </div>
+          <div class="stat-item__label">Visual themes</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item__number">
+            <span class="count-up" data-target="0" data-duration="500">0</span>
+          </div>
+          <div class="stat-item__label">Sign-ups required</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CTA Banner ─────────────────────────────────────────────── -->
+    <section class="cta-banner" aria-labelledby="cta-headline">
+      <div class="cta-banner-inner">
+        <p class="section-eyebrow reveal" style="text-align:center;">Your path starts here</p>
+        <h2 id="cta-headline" class="cta-headline reveal" data-reveal-delay="80">
+          Start where you are.<br>
+          Read your way.
+        </h2>
+        <p class="cta-sub reveal" data-reveal-delay="160">
+          No tutorials. No onboarding flows. Open the app and start — the tools
+          shape themselves to you, not the other way around.
+        </p>
+        <div class="cta-actions reveal" data-reveal-delay="240">
+          <a href="reading.html" class="btn btn--primary btn--large btn--magnetic">
+            <span class="material-symbols-outlined filled">auto_stories</span>
+            Open Reading Studio
+          </a>
+          <a href="learn.html" class="btn btn--secondary btn--large btn--magnetic">
+            <span class="material-symbols-outlined">translate</span>
+            Browse Kannada Lessons
+          </a>
+        </div>
+        <p class="cta-note reveal" data-reveal-delay="320">
+          Free forever &nbsp;&middot;&nbsp; No account &nbsp;&middot;&nbsp; Works offline after first load
+        </p>
       </div>
     </section>
 
   </main>
 
-  <!-- ======================================================================
-       Footer
-       ====================================================================== -->
-  <footer class="footer" aria-label="Site footer">
-    <div class="container">
-      <div class="footer__inner">
-
-        <!-- Brand -->
-        <div class="footer__brand">
-          <div class="footer__brand-name">🌿 Sugama<span>Path</span></div>
-          <p class="footer__tagline">
-            An accessible reading and language learning platform for
-            neurodivergent learners. Designed with care.
+  <!-- ── Footer ─────────────────────────────────────────────────── -->
+  <footer class="landing-footer" aria-label="Site footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-brand__logo nav-logo" aria-label="SugamaPath">
+            <svg class="nav-logo__icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <path d="M16 3C9.373 3 4 8.373 4 15c0 4.015 1.888 7.595 4.828 9.9L16 29l7.172-4.1C26.112 22.595 28 19.015 28 15c0-6.627-5.373-12-12-12z" fill="currentColor" opacity="0.15"/>
+              <path d="M16 7c-4.418 0-8 3.582-8 8 0 2.652 1.289 5.007 3.278 6.487L16 24l4.722-2.513C22.711 20.007 24 17.652 24 15c0-4.418-3.582-8-8-8z" fill="currentColor" opacity="0.4"/>
+              <path d="M16 11a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" fill="currentColor"/>
+            </svg>
+            <span class="nav-logo__name">SugamaPath</span>
+          </a>
+          <p class="footer-brand__desc">
+            Accessible reading and Kannada learning for neurodivergent learners.
+            Built with care in Bengaluru.
           </p>
         </div>
 
-        <!-- Tools links -->
-        <nav class="footer__links-group" aria-label="Tools navigation">
-          <div class="footer__links-heading">Tools</div>
-          <a href="reading.html" class="footer__link">Reading Tool</a>
-          <a href="learn.html"   class="footer__link">Learn Kannada</a>
-          <a href="practice.html" class="footer__link">Script Practice</a>
-          <a href="dashboard.html" class="footer__link">My Progress</a>
-        </nav>
+        <div>
+          <h3 class="footer-col__title">Platform</h3>
+          <ul class="footer-col__links" role="list">
+            <li><a href="reading.html">Reading Studio</a></li>
+            <li><a href="learn.html">Learn Kannada</a></li>
+            <li><a href="dashboard.html">My Progress</a></li>
+            <li><a href="practice.html">Practice</a></li>
+          </ul>
+        </div>
 
-        <!-- Site links -->
-        <nav class="footer__links-group" aria-label="Settings navigation">
-          <div class="footer__links-heading">Settings</div>
-          <a href="settings.html" class="footer__link">Accessibility Settings</a>
-          <a href="dashboard.html#notebook" class="footer__link">Vocabulary Notebook</a>
-        </nav>
+        <div>
+          <h3 class="footer-col__title">Accessibility</h3>
+          <ul class="footer-col__links" role="list">
+            <li><a href="settings.html">Reading Settings</a></li>
+            <li><a href="settings.html#fonts">Font Options</a></li>
+            <li><a href="settings.html#colours">Colour Overlays</a></li>
+            <li><a href="settings.html#audio">Audio Settings</a></li>
+          </ul>
+        </div>
 
+        <div>
+          <h3 class="footer-col__title">Learn</h3>
+          <ul class="footer-col__links" role="list">
+            <li><a href="learn.html">All Lessons</a></li>
+            <li><a href="lesson.html?id=greetings">Greetings</a></li>
+            <li><a href="lesson.html?id=numbers">Numbers</a></li>
+            <li><a href="lesson.html?id=alphabet">Alphabet</a></li>
+          </ul>
+        </div>
       </div>
 
-      <div class="footer__bottom">
-        <span>© 2025 SugamaPath. Made with care for neurodivergent learners.</span>
-        <span>"Sugama" (ಸುಗಮ) means comfortable or easy in Kannada.</span>
+      <div class="footer-bottom">
+        <p class="footer-bottom__copy">
+          &copy; 2025 SugamaPath. Free to use, forever. No data collected.
+        </p>
+        <p class="footer-bottom__kannada" aria-label="Sugama path in Kannada script" lang="kn">
+          ಸುಗಮ ಪಥ
+        </p>
       </div>
     </div>
   </footer>
 
-  <!-- ======================================================================
-       Scripts
-       ====================================================================== -->
+  <!-- ── Scripts ────────────────────────────────────────────────── -->
+  <script src="js/motion.js"></script>
   <script>
-    /* -----------------------------------------------------------------------
-       Mobile nav toggle
-       ----------------------------------------------------------------------- */
-    const navToggle = document.querySelector('.nav__toggle');
-    const navLinks  = document.querySelector('.nav__links');
+    (function () {
+      'use strict';
 
-    navToggle.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('is-open');
-      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
+      /* ── Theme cycling ──────────────────────────────────────────── */
+      var THEMES = ['dark', 'light', 'hc'];
+      var THEME_ICONS = {
+        dark:  'dark_mode',
+        light: 'light_mode',
+        hc:    'contrast'
+      };
+      var THEME_LABELS = {
+        dark:  'Switch to light theme',
+        light: 'Switch to high-contrast theme',
+        hc:    'Switch to dark theme'
+      };
 
-    /* Close mobile nav when a link is clicked */
-    navLinks.querySelectorAll('.nav__link').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('is-open');
-        navToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-
-    /* Close mobile nav on outside click */
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.nav')) {
-        navLinks.classList.remove('is-open');
-        navToggle.setAttribute('aria-expanded', 'false');
+      function getTheme() {
+        return document.documentElement.getAttribute('data-theme') || 'dark';
       }
-    });
 
+      function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('sugamapath_theme', theme);
+        var icon = document.getElementById('theme-icon');
+        var btn  = document.getElementById('btn-theme');
+        if (icon) icon.textContent = THEME_ICONS[theme] || 'settings_brightness';
+        if (btn)  btn.setAttribute('aria-label', THEME_LABELS[theme] || 'Switch theme');
+      }
+
+      document.getElementById('btn-theme').addEventListener('click', function () {
+        var current = getTheme();
+        var idx     = THEMES.indexOf(current);
+        var next    = THEMES[(idx + 1) % THEMES.length];
+        applyTheme(next);
+      });
+
+      applyTheme(getTheme());
+
+      /* ── Dyslexic font toggle ─────────────────────────────────── */
+      var isDyslexic = localStorage.getItem('sugamapath_dyslexic') === 'true';
+
+      function applyDyslexic(on) {
+        isDyslexic = on;
+        localStorage.setItem('sugamapath_dyslexic', on ? 'true' : 'false');
+        document.documentElement.classList.toggle('font-dyslexic', on);
+        var btn = document.getElementById('btn-dyslexic');
+        if (btn) {
+          btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+          btn.setAttribute('aria-label', on ? 'Disable dyslexic font' : 'Enable dyslexic font');
+        }
+      }
+
+      document.getElementById('btn-dyslexic').addEventListener('click', function () {
+        applyDyslexic(!isDyslexic);
+      });
+
+      applyDyslexic(isDyslexic);
+
+      /* ── Mobile nav ──────────────────────────────────────────── */
+      var menuBtn  = document.getElementById('btn-nav-menu');
+      var navLinks = document.querySelector('.nav-links');
+      var mobileNavOpen = false;
+
+      if (menuBtn && navLinks) {
+        menuBtn.addEventListener('click', function () {
+          mobileNavOpen = !mobileNavOpen;
+          menuBtn.setAttribute('aria-expanded', mobileNavOpen ? 'true' : 'false');
+          menuBtn.querySelector('.material-symbols-outlined').textContent =
+            mobileNavOpen ? 'close' : 'menu';
+          if (mobileNavOpen) {
+            navLinks.style.cssText = [
+              'display:flex',
+              'flex-direction:column',
+              'position:fixed',
+              'top:var(--nav-height)',
+              'left:0',
+              'right:0',
+              'background:var(--bg-surface)',
+              'padding:var(--sp-4) var(--margin-page) var(--sp-6)',
+              'border-bottom:1px solid var(--glass-border)',
+              'z-index:var(--z-nav)',
+              'gap:var(--sp-1)'
+            ].join(';');
+          } else {
+            navLinks.removeAttribute('style');
+          }
+        });
+      }
+
+    })();
   </script>
-  <script src="js/animations.js"></script>
-
 </body>
 </html>

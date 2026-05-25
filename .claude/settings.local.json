@@ -9,7 +9,8 @@
       "Bash(Write-Output \"Deleted\")",
       "PowerShell(Remove-Item *)",
       "PowerShell(Get-Command *)",
-      "PowerShell(Start-Process \"http://localhost:8787/_design-system.html\")"
+      "PowerShell(Start-Process \"http://localhost:8787/_design-system.html\")",
+      "Bash(curl *)"
     ]
   }
 }
