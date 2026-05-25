@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SugamaPath Reading Tool — paste any text or URL and read it with dyslexia-friendly fonts, custom spacing, and text-to-speech." />
+
+  <title>Reading Tool — SugamaPath</title>
+
+  <!-- Preconnect to Google Fonts for Lexend -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!--
+    settings.js runs FIRST — applies saved theme/font to <body> before any
+    paint, preventing a flash of wrong theme.
+  -->
+  <script src="js/settings.js"></script>
+
+  <!-- Readability.js — extracts clean article text from arbitrary web pages -->
+  <script src="https://cdn.jsdelivr.net/npm/@mozilla/readability/Readability.js"></script>
+
+  <!-- PDF.js — text extraction from uploaded PDF files -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>
+    if (typeof pdfjsLib !== 'undefined') {
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    }
+  </script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/reading.css" />
+
+  <!-- Shake animation for empty-textarea feedback -->
+  <style>
+    @keyframes input-shake {
+      0%, 100% { transform: translateX(0); }
+      20%       { transform: translateX(-6px); }
+      40%       { transform: translateX(6px); }
+      60%       { transform: translateX(-4px); }
+      80%       { transform: translateX(4px); }
+    }
+    .input-shake { animation: input-shake 0.35s ease; }
+  </style>
+</head>
+<body>
+
+  <!-- Skip link for keyboard users -->
+  <a class="skip-nav" href="#main-content">Skip to main content</a>
+
+  <!-- ======================================================================
+       Navigation
+       ====================================================================== -->
+  <header>
+    <nav class="nav" aria-label="Main navigation">
+      <div class="container">
+        <div class="nav__inner">
+
+          <a href="index.html" class="nav__logo" aria-label="SugamaPath home">
+            <span class="nav__logo-icon" aria-hidden="true">🌿</span>
+            Sugama<span>Path</span>
+          </a>
+
+          <button
+            class="nav__toggle"
+            aria-controls="nav-links"
+            aria-expanded="false"
+            aria-label="Toggle navigation menu"
+          >
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <rect y="4"  width="22" height="2.5" rx="1.25" fill="currentColor"/>
+              <rect y="10" width="22" height="2.5" rx="1.25" fill="currentColor"/>
+              <rect y="16" width="22" height="2.5" rx="1.25" fill="currentColor"/>
+            </svg>
+          </button>
+
+          <ul class="nav__links" id="nav-links" role="list">
+            <li><a href="index.html"     class="nav__link">Home</a></li>
+            <li><a href="reading.html"   class="nav__link" aria-current="page">Reading Tool</a></li>
+            <li><a href="learn.html"     class="nav__link">Learn Kannada</a></li>
+            <li><a href="dashboard.html" class="nav__link">Dashboard</a></li>
+            <li><a href="settings.html"  class="nav__link">Settings</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ======================================================================
+       Main: two-column reading tool layout
+       ====================================================================== -->
+  <main id="main-content" class="reading-page">
+    <div class="reading-layout">
+
+      <!-- ================================================================
+           LEFT COLUMN: Controls Panel (sticky on desktop)
+           ================================================================ -->
+      <aside
+        class="controls-panel"
+        aria-label="Reading controls"
+        id="controls-panel"
+      >
+        <!-- Panel header -->
+        <div class="controls-header" aria-hidden="true">
+          Reading Controls
+        </div>
+
+        <!-- ──────────────────────────────────────────────────────────────
+             INPUT SECTION — tabs: Paste Text / From URL
+             ────────────────────────────────────────────────────────────── -->
+        <div class="input-section">
+
+          <!-- Tab list -->
+          <div
+            class="tab-list tab-list--3"
+            role="tablist"
+            aria-label="Choose how to input text"
+          >
+            <button
+              class="tab-btn"
+              role="tab"
+              id="tab-paste"
+              aria-selected="true"
+              aria-controls="panel-paste"
+              data-tab="paste"
+              tabindex="0"
+            >
+              Paste Text
+            </button>
+            <button
+              class="tab-btn"
+              role="tab"
+              id="tab-url"
+              aria-selected="false"
+              aria-controls="panel-url"
+              data-tab="url"
+              tabindex="-1"
+            >
+              From URL
+            </button>
+            <button
+              class="tab-btn"
+              role="tab"
+              id="tab-pdf"
+              aria-selected="false"
+              aria-controls="panel-pdf"
+              data-tab="pdf"
+              tabindex="-1"
+            >
+              Upload PDF
+            </button>
+          </div>
+
+          <!-- ── Tab panel: Paste Text ── -->
+          <div
+            class="tab-panel"
+            id="panel-paste"
+            role="tabpanel"
+            aria-labelledby="tab-paste"
+          >
+            <label for="text-input" class="sr-only">Paste your text here</label>
+            <textarea
+              id="text-input"
+              class="reading-textarea"
+              placeholder="Paste any text here — an article, a book excerpt, a document, an email…"
+              aria-label="Text to format and read"
+              rows="9"
+              spellcheck="false"
+            ></textarea>
+
+            <div class="input-meta">
+              <span id="char-count" aria-live="polite" aria-atomic="true">0 chars</span>
+              <span>
+                <kbd>Ctrl</kbd>+<kbd>Enter</kbd> to format
+              </span>
+            </div>
+
+            <button
+              id="format-btn"
+              class="btn btn--primary btn--full"
+              aria-label="Format pasted text and display it in the reading area"
+            >
+              Format Text
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- ── Tab panel: From URL ── -->
+          <div
+            class="tab-panel"
+            id="panel-url"
+            role="tabpanel"
+            aria-labelledby="tab-url"
+            hidden
+          >
+            <div class="url-field-wrapper">
+              <label for="url-input" class="sr-only">Enter a URL to fetch and read</label>
+              <input
+                type="url"
+                id="url-input"
+                class="input"
+                placeholder="https://en.wikipedia.org/wiki/Dyslexia"
+                aria-label="URL to fetch and reformat"
+                autocomplete="url"
+                spellcheck="false"
+              />
+
+              <div class="url-note">
+                <strong>How it works:</strong> Wikipedia pages load directly via
+                their API. For other sites, we try multiple public proxies
+                automatically. Works best with article-style pages.
+                <br><br>
+                <strong>Quick start:</strong>
+                <div class="url-samples">
+                  <button class="url-sample-btn" data-url="https://en.wikipedia.org/wiki/Dyslexia">
+                    Wikipedia: Dyslexia
+                  </button>
+                  <button class="url-sample-btn" data-url="https://en.wikipedia.org/wiki/Kannada">
+                    Wikipedia: Kannada
+                  </button>
+                  <button class="url-sample-btn" data-url="https://en.wikipedia.org/wiki/Neurodiversity">
+                    Wikipedia: Neurodiversity
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <button
+              id="fetch-btn"
+              class="btn btn--primary btn--full"
+              aria-label="Fetch the URL and display its content in the reading area"
+            >
+              Fetch &amp; Format
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- ── Tab panel: Upload PDF ── -->
+          <div
+            class="tab-panel"
+            id="panel-pdf"
+            role="tabpanel"
+            aria-labelledby="tab-pdf"
+            hidden
+          >
+            <!-- Hidden real file input -->
+            <input
+              type="file"
+              id="pdf-input"
+              accept="application/pdf"
+              class="sr-only"
+              aria-label="Choose a PDF file"
+            />
+
+            <!-- Drag-and-drop zone -->
+            <div
+              id="pdf-dropzone"
+              class="pdf-dropzone"
+              role="button"
+              tabindex="0"
+              aria-label="Drop a PDF here, or press Enter to browse"
+            >
+              <svg class="pdf-dropzone__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/>
+              </svg>
+              <p class="pdf-dropzone__label">Drop a PDF here, or <span class="pdf-dropzone__browse">click to browse</span></p>
+            </div>
+
+            <!-- Progress / file info — populated by JS -->
+            <div class="pdf-progress-area"></div>
+
+            <p class="url-note" style="margin-top: var(--sp-2)">
+              Works best with <strong>text-based PDFs</strong> — lecture notes, textbooks, articles.
+              Scanned image PDFs cannot be extracted.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Divider between input and reading mode -->
+        <div class="controls-divider" role="separator" aria-hidden="true"></div>
+
+        <!-- ──────────────────────────────────────────────────────────────
+             READING MODE — AI simplification
+             ────────────────────────────────────────────────────────────── -->
+        <div class="controls-section">
+
+          <p class="controls-section__heading" id="mode-controls-heading">
+            Reading Mode
+          </p>
+
+          <!-- Three-way mode segmented control -->
+          <div
+            class="mode-toggle"
+            role="group"
+            aria-labelledby="mode-controls-heading"
+          >
+            <button class="mode-btn is-active" data-mode="original"    aria-pressed="true">Original</button>
+            <button class="mode-btn"           data-mode="simplified"  aria-pressed="false">Simplified</button>
+            <button class="mode-btn"           data-mode="summary"     aria-pressed="false">Summary</button>
+          </div>
+
+          <!-- Sub-options: Reading Level (Simplified mode only) -->
+          <div id="mode-sub-simplified" class="mode-sub-options" hidden>
+            <div class="label" id="level-label">Reading level</div>
+            <div class="level-toggle" role="group" aria-labelledby="level-label">
+              <button class="level-btn"           data-level="1" aria-pressed="false">Level 1</button>
+              <button class="level-btn is-active" data-level="2" aria-pressed="true">Level 2</button>
+              <button class="level-btn"           data-level="3" aria-pressed="false">Level 3</button>
+            </div>
+          </div>
+
+          <!-- Sub-options: Format (Summary mode only) -->
+          <div id="mode-sub-summary" class="mode-sub-options" hidden>
+            <div class="label" id="format-label">Format</div>
+            <div class="format-toggle" role="group" aria-labelledby="format-label">
+              <button class="format-btn is-active" data-format="keypoints" aria-pressed="true">Key Points</button>
+              <button class="format-btn"           data-format="tldr"      aria-pressed="false">TL;DR</button>
+            </div>
+          </div>
+
+          <p class="mode-notice" aria-live="polite">
+            Powered by Groq AI. Designed for engineering students — preserves
+            technical content while improving readability.
+          </p>
+
+        </div>
+
+        <!-- Divider between reading mode and translation -->
+        <div class="controls-divider" role="separator" aria-hidden="true"></div>
+
+        <!-- ──────────────────────────────────────────────────────────────
+             TRANSLATION SECTION
+             ────────────────────────────────────────────────────────────── -->
+        <div class="controls-section" id="translate-section">
+
+          <p class="controls-section__heading" id="translate-heading">
+            Translate
+          </p>
+
+          <div>
+            <label for="translate-select" class="sr-only">Translation language</label>
+            <select
+              id="translate-select"
+              class="translate-select"
+              aria-describedby="translate-notice"
+            >
+              <option value="none">— No translation —</option>
+              <optgroup label="Indian languages">
+                <option value="Hindi">Hindi (हिंदी)</option>
+                <option value="Bengali">Bengali (বাংলা)</option>
+                <option value="Tamil">Tamil (தமிழ்)</option>
+                <option value="Telugu">Telugu (తెలుగు)</option>
+                <option value="Kannada">Kannada (ಕನ್ನಡ)</option>
+                <option value="Malayalam">Malayalam (മലയാളം)</option>
+                <option value="Marathi">Marathi (मराठी)</option>
+                <option value="Gujarati">Gujarati (ગુજરાતી)</option>
+                <option value="Punjabi">Punjabi (ਪੰਜਾਬੀ)</option>
+                <option value="Odia">Odia (ଓଡ଼ିଆ)</option>
+                <option value="Urdu">Urdu (اردو)</option>
+              </optgroup>
+              <optgroup label="Other languages">
+                <option value="Spanish">Spanish (Español)</option>
+                <option value="French">French (Français)</option>
+                <option value="German">German (Deutsch)</option>
+                <option value="Portuguese">Portuguese (Português)</option>
+                <option value="Japanese">Japanese (日本語)</option>
+                <option value="Chinese (Simplified)">Chinese Simplified (中文)</option>
+                <option value="Arabic">Arabic (العربية)</option>
+                <option value="Russian">Russian (Русский)</option>
+                <option value="Indonesian">Indonesian (Bahasa)</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <p class="mode-notice" id="translate-notice">
+            Translates after any AI processing. Technical terms and code stay in English.
+          </p>
+
+        </div>
+
+        <!-- Divider between translation and accessibility controls -->
+        <div class="controls-divider" role="separator" aria-hidden="true"></div>
+
+        <!-- ──────────────────────────────────────────────────────────────
+             ACCESSIBILITY CONTROLS
+             ────────────────────────────────────────────────────────────── -->
+        <div class="controls-section">
+
+          <p class="controls-section__heading" id="a11y-controls-heading">
+            Accessibility Controls
+          </p>
+
+          <!-- Font toggle -->
+          <div class="font-control">
+            <div class="label" id="font-toggle-label">Reading font</div>
+            <div
+              class="font-toggle"
+              role="group"
+              aria-labelledby="font-toggle-label"
+            >
+              <button
+                class="font-toggle__btn is-active"
+                data-font="lexend"
+                aria-pressed="true"
+                title="Lexend — designed to reduce visual stress"
+              >
+                Lexend
+              </button>
+              <button
+                class="font-toggle__btn"
+                data-font="dyslexic"
+                aria-pressed="false"
+                title="OpenDyslexic — weighted bottoms help orient letters"
+              >
+                OpenDyslexic
+              </button>
+            </div>
+          </div>
+
+          <!-- Font size slider -->
+          <div class="slider-group">
+            <div class="slider-header">
+              <label class="slider-label" for="slider-font-size">
+                Font size
+              </label>
+              <span
+                class="slider-value"
+                id="val-font-size"
+                aria-live="polite"
+                aria-atomic="true"
+              >18px</span>
+            </div>
+            <input
+              type="range"
+              class="slider"
+              id="slider-font-size"
+              min="14"
+              max="28"
+              step="1"
+              value="18"
+              aria-label="Font size"
+              aria-valuemin="14"
+              aria-valuemax="28"
+              aria-valuenow="18"
+              aria-valuetext="18 pixels"
+            />
+          </div>
+
+          <!-- Line height slider -->
+          <div class="slider-group">
+            <div class="slider-header">
+              <label class="slider-label" for="slider-line-height">
+                Line height
+              </label>
+              <span
+                class="slider-value"
+                id="val-line-height"
+                aria-live="polite"
+                aria-atomic="true"
+              >1.85</span>
+            </div>
+            <input
+              type="range"
+              class="slider"
+              id="slider-line-height"
+              min="1.4"
+              max="2.4"
+              step="0.05"
+              value="1.85"
+              aria-label="Line height"
+              aria-valuemin="1.4"
+              aria-valuemax="2.4"
+              aria-valuenow="1.85"
+            />
+          </div>
+
+          <!-- Letter spacing slider -->
+          <div class="slider-group">
+            <div class="slider-header">
+              <label class="slider-label" for="slider-letter-spacing">
+                Letter spacing
+              </label>
+              <span
+                class="slider-value"
+                id="val-letter-spacing"
+                aria-live="polite"
+                aria-atomic="true"
+              >0.040em</span>
+            </div>
+            <input
+              type="range"
+              class="slider"
+              id="slider-letter-spacing"
+              min="0"
+              max="0.15"
+              step="0.005"
+              value="0.04"
+              aria-label="Letter spacing"
+              aria-valuemin="0"
+              aria-valuemax="0.15"
+              aria-valuenow="0.04"
+            />
+          </div>
+
+          <!-- Word spacing slider -->
+          <div class="slider-group">
+            <div class="slider-header">
+              <label class="slider-label" for="slider-word-spacing">
+                Word spacing
+              </label>
+              <span
+                class="slider-value"
+                id="val-word-spacing"
+                aria-live="polite"
+                aria-atomic="true"
+              >0.12em</span>
+            </div>
+            <input
+              type="range"
+              class="slider"
+              id="slider-word-spacing"
+              min="0"
+              max="0.4"
+              step="0.01"
+              value="0.12"
+              aria-label="Word spacing"
+              aria-valuemin="0"
+              aria-valuemax="0.4"
+              aria-valuenow="0.12"
+            />
+          </div>
+
+          <!-- Reset button -->
+          <button
+            id="reset-controls"
+            class="btn btn--ghost btn--full"
+            aria-label="Reset all accessibility controls to their default values"
+          >
+            ↺ Reset to defaults
+          </button>
+
+        </div>
+        <!-- /controls-section -->
+
+      </aside>
+      <!-- /controls-panel -->
+
+      <!-- ================================================================
+           RIGHT COLUMN: Reading Area
+           JS renders empty/loading/error/content states here.
+           ================================================================ -->
+      <div
+        class="reading-area"
+        id="reading-area"
+        aria-live="polite"
+        aria-atomic="false"
+        aria-label="Reading area"
+      >
+        <!--
+          Intentionally empty — reading.js renders the initial empty state
+          and all subsequent states (loading, error, content) here.
+        -->
+      </div>
+
+    </div>
+    <!-- /reading-layout -->
+
+  </main>
+
+  <!-- ======================================================================
+       Scripts (at end of body so DOM is ready)
+       ====================================================================== -->
+  <script>
+    /* Mobile nav toggle */
+    const navToggle = document.querySelector('.nav__toggle');
+    const navLinks  = document.querySelector('.nav__links');
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('is-open');
+        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      document.addEventListener('click', e => {
+        if (!e.target.closest('.nav')) {
+          navLinks.classList.remove('is-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  </script>
+  <script src="js/config.js"></script>
+  <script src="js/simplify.js"></script>
+  <script src="js/translate.js"></script>
+  <script src="js/pdf-extract.js"></script>
+  <script src="js/reading.js"></script>
+
+</body>
+</html>
