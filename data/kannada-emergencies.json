@@ -1,0 +1,120 @@
+{
+  "id": "emergencies",
+  "type": "vocabulary",
+  "language": "kannada",
+  "title": "Help & Emergencies",
+  "titleKannada": "ಸಹಾಯ ಮತ್ತು ತುರ್ತು",
+  "subtitle": "When something goes wrong",
+  "description": "Phrases for when something goes wrong — feeling sick, needing a doctor, asking for help, being lost.",
+  "estimatedMinutes": 8,
+  "items": [
+    {
+      "id": "sahaya-beku",
+      "kannada": "ಸಹಾಯ ಬೇಕು",
+      "roman": "sahāya bēku",
+      "english": "I need help",
+      "context": "Sahāya means help, bēku means I need/want — calm and clear, this signals to anyone nearby that you need assistance",
+      "scenario": "When you're in any difficult situation — lost, unwell, or dealing with an unfamiliar bureaucratic process",
+      "imageQuery": "help assistance emergency need support"
+    },
+    {
+      "id": "hosa-ooru",
+      "kannada": "ನನಗೆ ಹೊಸ ಊರು",
+      "roman": "naṃge hosa ūru",
+      "english": "I'm new to this city",
+      "context": "Hosa means new, ūru means town/city — explaining you're new instantly invites more patience and helpfulness from most locals",
+      "scenario": "When you're confused, asking for unusual help, or someone seems impatient with you — this explanation softens almost everything",
+      "imageQuery": "new city confused newcomer arrival"
+    },
+    {
+      "id": "daktaru-beku",
+      "kannada": "ಡಾಕ್ಟರು ಬೇಕು",
+      "roman": "ḍākṭaru bēku",
+      "english": "I need a doctor",
+      "context": "Ḍākṭaru is borrowed from English — say this clearly and people will understand immediately and help you find medical assistance",
+      "scenario": "When you're sick, injured, or someone with you needs urgent medical attention",
+      "imageQuery": "doctor medical help emergency hospital"
+    },
+    {
+      "id": "aspatre-elli",
+      "kannada": "ಆಸ್ಪತ್ರೆ ಎಲ್ಲಿ?",
+      "roman": "āspatre elli?",
+      "english": "Where is the hospital?",
+      "context": "Āspatre is hospital, elli is where — important to know this even before you need it. Locate the nearest one to your PG when you first arrive",
+      "scenario": "Directing an auto or asking any local to point you toward the nearest hospital or clinic",
+      "imageQuery": "hospital emergency sign building india"
+    },
+    {
+      "id": "husharilla",
+      "kannada": "ನನಗೆ ಹುಷಾರಿಲ್ಲ",
+      "roman": "naṃge huṣārilla",
+      "english": "I am not feeling well",
+      "context": "Huṣāru means wellness or health, illa means no/not — a clear, simple way to communicate you're unwell without needing to describe symptoms",
+      "scenario": "Telling your college friends, PG owner, or a local that you're not well and need rest or medical help",
+      "imageQuery": "unwell sick person feeling ill health"
+    },
+    {
+      "id": "police-beku",
+      "kannada": "ಪೊಲೀಸು ಬೇಕು",
+      "roman": "polīsu bēku",
+      "english": "I need the police",
+      "context": "Polīsu is police (borrowed) — say this loudly and clearly in public if you're being harassed or witness a crime",
+      "scenario": "If you've been robbed, in an accident, or someone is threatening you — shouting this also draws attention from bystanders",
+      "imageQuery": "police help emergency india law"
+    },
+    {
+      "id": "dari-kanuttilla",
+      "kannada": "ನನಗೆ ದಾರಿ ಕಾಣುತ್ತಿಲ್ಲ",
+      "roman": "naṃge dāri kāṇuttilla",
+      "english": "I can't find the way / I'm lost",
+      "context": "Dāri means path/way, kāṇuttilla means I can't see — GPS fails in inner lanes; being able to say this gets you real help from locals",
+      "scenario": "When your map app has taken you somewhere that clearly doesn't match the address and you need human help",
+      "imageQuery": "lost confused map navigation help street"
+    },
+    {
+      "id": "phone-kodi",
+      "kannada": "ಫೋನ್ ಕೊಡಿ",
+      "roman": "phōn koḍi",
+      "english": "Please give me the phone",
+      "context": "For when your battery is dead and you desperately need to call someone — most people will lend their phone to someone in distress",
+      "scenario": "Your phone died, you're lost, and you need to call a friend or call a cab using someone else's device",
+      "imageQuery": "phone borrow mobile call emergency"
+    },
+    {
+      "id": "pen-kodi",
+      "kannada": "ಪೆನ್ ಕೊಡಿ",
+      "roman": "pen koḍi",
+      "english": "Please give me a pen",
+      "context": "Government offices, banks, and police stations still require handwritten forms — a pen request signals you're in paperwork territory",
+      "scenario": "Filling in forms at a government office, bank, or hospital registration counter",
+      "imageQuery": "pen writing form paperwork office india"
+    },
+    {
+      "id": "time-estu",
+      "kannada": "ಟೈಮ್ ಎಷ್ಟು?",
+      "roman": "ṭaim eṣṭu?",
+      "english": "What time is it?",
+      "context": "Ṭaim is borrowed English, eṣṭu means how much — useful when your phone is dead or you're in a market without any clocks",
+      "scenario": "When your phone is dead, or you're in a crowded market trying to figure out if you'll make your bus",
+      "imageQuery": "time clock watch asking person"
+    },
+    {
+      "id": "wifi-password",
+      "kannada": "ವೈಫೈ ಪಾಸ್‌ವರ್ಡ್ ಕೊಡಿ",
+      "roman": "vaiphay pāsvarḍ koḍi",
+      "english": "Please give me the wifi password",
+      "context": "Three English words that Kannadigas immediately understand — staying connected in Bengaluru often depends on café and restaurant wifi",
+      "scenario": "Walking into any café, restaurant, or waiting room and needing to work or navigate without burning through your data",
+      "imageQuery": "wifi internet password cafe laptop"
+    },
+    {
+      "id": "nange-gottilla",
+      "kannada": "ನನಗೆ ಗೊತ್ತಿಲ್ಲ",
+      "roman": "naṃge gottilla",
+      "english": "I don't know",
+      "context": "Gotta means knowledge, illa means no — this is honest and respectable. Don't guess and give wrong information when lost or confused",
+      "scenario": "When someone asks you for directions or information you genuinely don't have — redirect them to someone local",
+      "imageQuery": "dont know confused shrug unknown"
+    }
+  ]
+}

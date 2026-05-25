@@ -1,0 +1,147 @@
+{
+  "id": "shopping",
+  "type": "vocabulary",
+  "language": "kannada",
+  "title": "Shopping & Money",
+  "titleKannada": "ಖರೀದಿ ಮತ್ತು ಹಣ",
+  "subtitle": "Numbers, prices, and bargaining",
+  "description": "From vegetable vendors at HSR to electronics shops on SP Road — count, ask prices, and bargain confidently.",
+  "estimatedMinutes": 10,
+  "items": [
+    {
+      "id": "ondu",
+      "kannada": "ಒಂದು",
+      "roman": "ondu",
+      "english": "One",
+      "context": "The first number every Bengaluru newcomer needs — used constantly in prices, quantities, and bus numbering",
+      "scenario": "Telling a vendor you want one piece, or confirming there's only one item left",
+      "imageQuery": "number one single item counting"
+    },
+    {
+      "id": "eradu",
+      "kannada": "ಎರಡು",
+      "roman": "eraḍu",
+      "english": "Two",
+      "context": "Second most used number — pairs with items: eraḍu idli, eraḍu kilo (two kilos) at the vegetable market",
+      "scenario": "Ordering two portions of something, or asking for two pieces from a market stall",
+      "imageQuery": "number two pair items counting"
+    },
+    {
+      "id": "muru",
+      "kannada": "ಮೂರು",
+      "roman": "mūru",
+      "english": "Three",
+      "context": "Mūru comes up in addresses, bus routes, and prices — the r sound is longer and rounder than English",
+      "scenario": "Asking for three of something, or telling the auto driver the building number is three",
+      "imageQuery": "number three counting fingers"
+    },
+    {
+      "id": "nalku",
+      "kannada": "ನಾಲ್ಕು",
+      "roman": "nālku",
+      "english": "Four",
+      "context": "Nālku has a distinctive ā sound — practice it so vendors understand your quantity request clearly",
+      "scenario": "Buying four items at a market or requesting the 4th floor in a shop",
+      "imageQuery": "number four counting market"
+    },
+    {
+      "id": "aidu",
+      "kannada": "ಐದು",
+      "roman": "aidu",
+      "english": "Five",
+      "context": "Aidu is used constantly — five rupees, five pieces, five minutes. One of the most versatile numbers in daily life",
+      "scenario": "Buying five bananas at RS Puram market or asking for five rupees change",
+      "imageQuery": "number five hand gesture five fingers"
+    },
+    {
+      "id": "hattu",
+      "kannada": "ಹತ್ತು",
+      "roman": "hattu",
+      "english": "Ten",
+      "context": "The base unit for most small purchases — hattu rupee is still a meaningful amount at local markets and street stalls",
+      "scenario": "Buying a single masal dosa, a bun-butter, or a small snack for around ten rupees",
+      "imageQuery": "ten rupees small purchase india market"
+    },
+    {
+      "id": "nuru",
+      "kannada": "ನೂರು",
+      "roman": "nūru",
+      "english": "Hundred",
+      "context": "The standard unit when talking about larger purchases — nūru rupees is the typical minimum for most auto rides",
+      "scenario": "Negotiating an auto fare, buying a kilo of vegetables, or asking for a hundred-rupee note back as change",
+      "imageQuery": "hundred rupee note india currency"
+    },
+    {
+      "id": "savira",
+      "kannada": "ಸಾವಿರ",
+      "roman": "sāvira",
+      "english": "Thousand",
+      "context": "Sāvira is how prices above a thousand are expressed — rent, mobile recharges, and electronics all go into the sāvira range",
+      "scenario": "Negotiating a monthly PG rent, buying something at a shop, or understanding a quoted price",
+      "imageQuery": "thousand rupees large purchase india"
+    },
+    {
+      "id": "estu",
+      "kannada": "ಎಷ್ಟು?",
+      "roman": "eṣṭu?",
+      "english": "How much?",
+      "context": "Just one word, said with a questioning tone — the most useful thing you'll say at any market or street stall",
+      "scenario": "Pointing at any item without a price tag and asking what it costs — works everywhere from fashion street to vegetable markets",
+      "imageQuery": "how much price asking market stall"
+    },
+    {
+      "id": "tumba-dubari",
+      "kannada": "ತುಂಬಾ ದುಬಾರಿ",
+      "roman": "tuṃbā dubāri",
+      "english": "Too expensive",
+      "context": "Tumba means very, dubāri means expensive — say this with mild disbelief for best effect. It usually triggers a counter-offer",
+      "scenario": "When a vendor quotes you a clearly inflated price, especially at tourist-adjacent markets or clothing stalls",
+      "imageQuery": "expensive shocked price negotiation bargain"
+    },
+    {
+      "id": "kammi-maadi",
+      "kannada": "ಕಮ್ಮಿ ಮಾಡಿ",
+      "roman": "kammi māḍi",
+      "english": "Reduce the price",
+      "context": "Kammi means less, māḍi means make/do — direct, respectful, and universally understood at any negotiable-price situation",
+      "scenario": "After the vendor quotes a price, pause, look doubtful, say this — then wait. Silence is your friend",
+      "imageQuery": "bargaining reduce price negotiation india"
+    },
+    {
+      "id": "idu-kodi",
+      "kannada": "ಇದು ಕೊಡಿ",
+      "roman": "idu koḍi",
+      "english": "Give me this",
+      "context": "Idu means this, koḍi means give — point at what you want and say this. Works when you don't know the item name",
+      "scenario": "Pointing at a specific vegetable, phone case, or food item when you don't know the Kannada name for it",
+      "imageQuery": "pointing item buying selecting market"
+    },
+    {
+      "id": "bere-ide",
+      "kannada": "ಬೇರೆ ಇದೆ?",
+      "roman": "bēre ide?",
+      "english": "Do you have another / a different one?",
+      "context": "Bēre means other or different, ide means there is — use it when you want a different colour, size, or variety",
+      "scenario": "When the item you want doesn't fit, isn't the right colour, or you want to see other options first",
+      "imageQuery": "different options choice variety selection"
+    },
+    {
+      "id": "chila-beka",
+      "kannada": "ಚೀಲ ಬೇಕಾ?",
+      "roman": "cīla bēkā?",
+      "english": "Do you need a bag?",
+      "context": "Cīla is bag, bēkā is the questioning form of want — a polite question from the vendor. Bags often cost ₹2–₹5 extra",
+      "scenario": "When checking out at a store and the cashier asks if you need a carry bag",
+      "imageQuery": "shopping bag carry purchase india"
+    },
+    {
+      "id": "change-kodi",
+      "kannada": "ಚೇಂಜ್ ಕೊಡಿ",
+      "roman": "ceṃj koḍi",
+      "english": "Please give change",
+      "context": "Change (borrowed from English) is universally understood — asking for it firmly but politely is sometimes necessary when vendors claim they have none",
+      "scenario": "After paying with a large note and the vendor seems reluctant to break it — be direct, they usually have change",
+      "imageQuery": "change coins rupees cashier india"
+    }
+  ]
+}

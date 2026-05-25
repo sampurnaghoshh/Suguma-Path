@@ -1,0 +1,147 @@
+{
+  "id": "food",
+  "type": "vocabulary",
+  "language": "kannada",
+  "title": "Food & Restaurants",
+  "titleKannada": "ಆಹಾರ ಮತ್ತು ಹೋಟೆಲ್",
+  "subtitle": "Order, eat, and pay like a local",
+  "description": "Whether it's a Darshini, a mess, or a fancy restaurant — these phrases handle ordering, dietary preferences, and the bill.",
+  "estimatedMinutes": 10,
+  "items": [
+    {
+      "id": "menu-kodi",
+      "kannada": "ಮೆನು ಕೊಡಿ",
+      "roman": "menu koḍi",
+      "english": "Please give me the menu",
+      "context": "Koḍi means please give — this polite suffix works with almost anything you want to ask for",
+      "scenario": "Sitting down at any restaurant that isn't a self-service Darshini — the menu may only be a laminated paper sheet",
+      "imageQuery": "restaurant menu india food"
+    },
+    {
+      "id": "idakke-estu",
+      "kannada": "ಇದಕ್ಕೆ ಎಷ್ಟು?",
+      "roman": "idakke eṣṭu?",
+      "english": "How much is this?",
+      "context": "Point at what you want and say this — works in restaurants, street stalls, and anywhere without a price board",
+      "scenario": "Pointing at a dish you can see others eating but don't know the name of, or checking the price before ordering",
+      "imageQuery": "price check pointing food stall india"
+    },
+    {
+      "id": "shakaahari",
+      "kannada": "ನಾನು ಶಾಕಾಹಾರಿ",
+      "roman": "nānu śākāhāri",
+      "english": "I am vegetarian",
+      "context": "Śāka means vegetable, āhāri means eater — vegetarianism is widely respected in Karnataka and most places accommodate it easily",
+      "scenario": "Whenever you sit down somewhere new — say this once and the staff will guide you to the right dishes",
+      "imageQuery": "vegetarian food india thali green"
+    },
+    {
+      "id": "maamsaahari",
+      "kannada": "ನಾನು ಮಾಂಸಾಹಾರಿ",
+      "roman": "nānu māṃsāhāri",
+      "english": "I am non-vegetarian",
+      "context": "Māṃsa means meat — some traditional restaurants only serve vegetarian food, so knowing this helps you understand if you're in the right place",
+      "scenario": "Asking if a restaurant serves meat dishes, or clarifying your preference when being recommended a place",
+      "imageQuery": "non vegetarian food chicken india"
+    },
+    {
+      "id": "kara-kammi",
+      "kannada": "ಕಾರ ಕಮ್ಮಿ ಮಾಡಿ",
+      "roman": "kāra kammi māḍi",
+      "english": "Make it less spicy",
+      "context": "Kāra is spice/heat, kammi means less, māḍi means make — Karnataka food can be genuinely fiery, especially sambar and chutneys",
+      "scenario": "When ordering at a Darshini or mess and you want to warn the cook that you're not built for full-heat Karnataka spice",
+      "imageQuery": "spicy food chilli heat warning india"
+    },
+    {
+      "id": "niru-kodi",
+      "kannada": "ನೀರು ಕೊಡಿ",
+      "roman": "nīru koḍi",
+      "english": "Please give me water",
+      "context": "Nīru is water — one of the most essential words in the language and the most requested thing at any Karnataka meal",
+      "scenario": "At any restaurant, mess, or even a roadside stall — always ask for water before the spicy food arrives",
+      "imageQuery": "water glass drinking india restaurant"
+    },
+    {
+      "id": "innu-svalpa-kodi",
+      "kannada": "ಇನ್ನು ಸ್ವಲ್ಪ ಕೊಡಿ",
+      "roman": "innu svalpa koḍi",
+      "english": "Please give me some more",
+      "context": "Innu means more/still, svalpa means a little — in traditional Karnataka meals, refills are free and expected. Don't be shy",
+      "scenario": "At a banana leaf meal or mess where rice and sambar are refilled — point at what you want more of",
+      "imageQuery": "food refill more serving banana leaf"
+    },
+    {
+      "id": "sakaagide",
+      "kannada": "ಸಾಕಾಗಿದೆ",
+      "roman": "sākāgide",
+      "english": "It's enough / I'm full",
+      "context": "Sāku means enough — say this with your hand out, palm facing down, when you want the server to stop refilling",
+      "scenario": "When the server keeps piling rice onto your banana leaf and you're already full but they won't stop",
+      "imageQuery": "full satisfied eating stop hand"
+    },
+    {
+      "id": "tumba-ruchiyagide",
+      "kannada": "ತುಂಬಾ ರುಚಿಯಾಗಿದೆ",
+      "roman": "tuṃbā ruciyāgide",
+      "english": "It's very tasty",
+      "context": "Ruci means taste, tumba means very — saying this to a restaurant owner or home cook is one of the nicest things you can do",
+      "scenario": "After a good meal anywhere — the cook's face will light up when a non-Kannadiga says this genuinely",
+      "imageQuery": "delicious food happy eating thumbs up"
+    },
+    {
+      "id": "bill-kodi",
+      "kannada": "ಬಿಲ್ ಕೊಡಿ",
+      "roman": "bil koḍi",
+      "english": "Please give me the bill",
+      "context": "Simple and understood everywhere — at sit-down restaurants you need to ask, servers won't bring it automatically",
+      "scenario": "When you've finished eating and are ready to pay — don't wait, just ask",
+      "imageQuery": "restaurant bill check payment india"
+    },
+    {
+      "id": "oota-madabahuda",
+      "kannada": "ಊಟ ಮಾಡಬಹುದಾ?",
+      "roman": "ūṭa māḍabahudā?",
+      "english": "Can I have a meal?",
+      "context": "Ūṭa means a proper meal (cooked rice with sides) — asking this at a mess or hotel unlocks the full banana-leaf experience rather than just ordering à la carte",
+      "scenario": "Walking into a local mess or 'hotel' (as restaurants are called in Karnataka) and asking if the full meal is available",
+      "imageQuery": "banana leaf meal karnataka traditional"
+    },
+    {
+      "id": "coffee-kodi",
+      "kannada": "ಕಾಫಿ ಕೊಡಿ",
+      "roman": "kāphi koḍi",
+      "english": "Please give me coffee",
+      "context": "Filter coffee in Karnataka is a ritual — thick decoction, hot milk, served in a steel davara-tumbler set. Nothing else compares",
+      "scenario": "At any 'hotel' or Darshini in Karnataka — this is the correct move every morning",
+      "imageQuery": "filter coffee south india steel tumbler"
+    },
+    {
+      "id": "idli-dose-ide",
+      "kannada": "ಇಡ್ಲಿ / ದೋಸೆ ಇದೆಯಾ?",
+      "roman": "iḍli / dōse ideyā?",
+      "english": "Do you have idli / dosa?",
+      "context": "Ideyā turns a statement into a question — use it to ask if any dish is available before ordering it",
+      "scenario": "At a small street stall or mess that might only serve specific items depending on the time of day",
+      "imageQuery": "idli dosa south indian breakfast plate"
+    },
+    {
+      "id": "parcel-maadi",
+      "kannada": "ಪಾರ್ಸಲ್ ಮಾಡಿ",
+      "roman": "pārsal māḍi",
+      "english": "Please pack it (takeaway)",
+      "context": "Parcel is the Karnataka word for takeaway — māḍi means do/make it. Perfectly understood everywhere from Darshinis to highway dhabas",
+      "scenario": "When you want to take food back to your hostel or PG instead of eating in",
+      "imageQuery": "takeaway pack food parcel bag india"
+    },
+    {
+      "id": "tumba-chennagide",
+      "kannada": "ತುಂಬಾ ಚೆನ್ನಾಗಿದೆ",
+      "roman": "tuṃbā cennāgide",
+      "english": "It's very nice / excellent",
+      "context": "Chenna means beautiful or excellent in Kannada — a warm all-purpose compliment that works for food, places, and people",
+      "scenario": "After finishing a meal at a small local restaurant — the chef and owner will remember you fondly",
+      "imageQuery": "excellent nice happy satisfied food compliment"
+    }
+  ]
+}

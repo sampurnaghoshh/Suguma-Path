@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accessibility Settings — SugamaPath</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <script src="js/settings.js"></script>
+  <link rel="stylesheet" href="css/global.css" />
+  <style>
+    .placeholder-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - var(--nav-height));
+      text-align: center;
+      gap: var(--sp-5);
+      padding: var(--sp-16) var(--sp-8);
+    }
+    .placeholder-icon {
+      color: var(--color-border);
+      margin-bottom: var(--sp-2);
+    }
+    .placeholder-page h1 {
+      font-family: var(--font-display);
+      font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      font-variation-settings: 'opsz' 36;
+    }
+    .placeholder-page p {
+      color: var(--color-text-muted);
+      font-size: var(--text-lg);
+      max-width: 40ch;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-nav" href="#main-content">Skip to main content</a>
+  <header>
+    <nav class="nav" aria-label="Main navigation">
+      <div class="container">
+        <div class="nav__inner">
+          <a href="index.html" class="nav__logo" aria-label="SugamaPath home">
+            <span class="nav__logo-icon" aria-hidden="true">🌿</span>
+            Sugama<span>Path</span>
+          </a>
+          <button class="nav__toggle" aria-controls="nav-links" aria-expanded="false" aria-label="Toggle navigation menu">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <rect y="4"  width="22" height="2.5" rx="1.25" fill="currentColor"/>
+              <rect y="10" width="22" height="2.5" rx="1.25" fill="currentColor"/>
+              <rect y="16" width="22" height="2.5" rx="1.25" fill="currentColor"/>
+            </svg>
+          </button>
+          <ul class="nav__links" id="nav-links" role="list">
+            <li><a href="index.html"     class="nav__link">Home</a></li>
+            <li><a href="reading.html"   class="nav__link">Reading Tool</a></li>
+            <li><a href="learn.html"     class="nav__link">Learn Kannada</a></li>
+            <li><a href="dashboard.html" class="nav__link">Dashboard</a></li>
+            <li><a href="settings.html"  class="nav__link" aria-current="page">Settings</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <div class="placeholder-page">
+      <div class="placeholder-icon" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"
+             stroke-linecap="round" width="48" height="48">
+          <path d="M6 16h36M6 24h36M6 32h36"/>
+          <circle cx="18" cy="16" r="4" fill="none" stroke="currentColor"/>
+          <circle cx="30" cy="24" r="4" fill="none" stroke="currentColor"/>
+          <circle cx="20" cy="32" r="4" fill="none" stroke="currentColor"/>
+        </svg>
+      </div>
+      <h1>Accessibility Settings</h1>
+      <p>Coming next — all accessibility preferences in one place, applied site-wide.</p>
+      <a href="index.html" class="btn btn--ghost">← Back to Home</a>
+    </div>
+  </main>
+
+  <script>
+    const navToggle = document.querySelector('.nav__toggle');
+    const navLinks  = document.querySelector('.nav__links');
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('is-open');
+        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      document.addEventListener('click', e => {
+        if (!e.target.closest('.nav')) {
+          navLinks.classList.remove('is-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

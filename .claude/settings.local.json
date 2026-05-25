@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\sampu\\\\OneDrive\\\\Desktop\\\\WEBProject\" -Recurse -Force)",
+      "Bash(Select-Object -Property FullName, PSIsContainer)",
+      "Bash(Sort-Object FullName)",
+      "Bash(Remove-Item -Path \"C:\\\\Users\\\\sampu\\\\OneDrive\\\\Desktop\\\\WEBProject\\\\data\\\\kannada-family.json\" -Force)",
+      "Bash(Remove-Item -Path \"C:\\\\Users\\\\sampu\\\\OneDrive\\\\Desktop\\\\WEBProject\\\\data\\\\kannada-numbers.json\" -Force)",
+      "Bash(Write-Output \"Deleted\")",
+      "PowerShell(Remove-Item *)",
+      "PowerShell(Get-Command *)"
+    ]
+  }
+}

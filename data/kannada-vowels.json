@@ -1,0 +1,27 @@
+{
+  "id": "vowels",
+  "type": "alphabet",
+  "language": "kannada",
+  "title": "Kannada Vowels",
+  "titleKannada": "ಕನ್ನಡ ಸ್ವರಗಳು",
+  "description": "Kannada has 16 vowels. Each vowel has an independent form (used at the start of a word) and a diacritic form (attached to consonants).",
+  "estimatedMinutes": 12,
+  "items": [
+    { "id": "a",   "glyph": "ಅ",  "roman": "a",   "ipa": "ə",   "example": "ಅಮ್ಮ",   "exampleRoman": "amma",      "exampleMeaning": "mother" },
+    { "id": "aa",  "glyph": "ಆ",  "roman": "ā",   "ipa": "aː",  "example": "ಆನೆ",    "exampleRoman": "āne",       "exampleMeaning": "elephant" },
+    { "id": "i",   "glyph": "ಇ",  "roman": "i",   "ipa": "i",   "example": "ಇಲ್ಲಿ",  "exampleRoman": "illi",      "exampleMeaning": "here" },
+    { "id": "ii",  "glyph": "ಈ",  "roman": "ī",   "ipa": "iː",  "example": "ಈಜು",    "exampleRoman": "īju",       "exampleMeaning": "swimming" },
+    { "id": "u",   "glyph": "ಉ",  "roman": "u",   "ipa": "u",   "example": "ಉಪ್ಪು",  "exampleRoman": "uppu",      "exampleMeaning": "salt" },
+    { "id": "uu",  "glyph": "ಊ",  "roman": "ū",   "ipa": "uː",  "example": "ಊರು",    "exampleRoman": "ūru",       "exampleMeaning": "village" },
+    { "id": "ru",  "glyph": "ಋ",  "roman": "ṛ",   "ipa": "ɾ̩",  "example": "ಋಷಿ",    "exampleRoman": "ṛṣi",      "exampleMeaning": "sage / saint" },
+    { "id": "ruu", "glyph": "ೠ",  "roman": "ṝ",   "ipa": "ɾ̩ː", "example": "ೠಕಾರ",   "exampleRoman": "ṝkāra",    "exampleMeaning": "the letter ṝ (rare in modern Kannada)" },
+    { "id": "e",   "glyph": "ಎ",  "roman": "e",   "ipa": "e",   "example": "ಎಲೆ",    "exampleRoman": "ele",       "exampleMeaning": "leaf" },
+    { "id": "ee",  "glyph": "ಏ",  "roman": "ē",   "ipa": "eː",  "example": "ಏಣಿ",    "exampleRoman": "ēṇi",      "exampleMeaning": "ladder" },
+    { "id": "ai",  "glyph": "ಐ",  "roman": "ai",  "ipa": "ai",  "example": "ಐದು",    "exampleRoman": "aidu",      "exampleMeaning": "five" },
+    { "id": "o",   "glyph": "ಒ",  "roman": "o",   "ipa": "o",   "example": "ಒಂದು",   "exampleRoman": "ondu",      "exampleMeaning": "one" },
+    { "id": "oo",  "glyph": "ಓ",  "roman": "ō",   "ipa": "oː",  "example": "ಓಡು",    "exampleRoman": "ōḍu",      "exampleMeaning": "run" },
+    { "id": "au",  "glyph": "ಔ",  "roman": "au",  "ipa": "au",  "example": "ಔಷಧ",    "exampleRoman": "auṣadha",   "exampleMeaning": "medicine" },
+    { "id": "am",  "glyph": "ಅಂ", "roman": "aṃ",  "ipa": "əŋ",  "example": "ಸಂಗೀತ",  "exampleRoman": "saṃgīta",  "exampleMeaning": "music" },
+    { "id": "ah",  "glyph": "ಅಃ", "roman": "aḥ",  "ipa": "əh",  "example": "ದುಃಖ",   "exampleRoman": "duḥkha",   "exampleMeaning": "sorrow" }
+  ]
+}

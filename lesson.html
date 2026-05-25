@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Learn Kannada phrases with flashcards, audio pronunciation, and progress tracking. SugamaPath — at your own pace." />
+  <title>Lesson — SugamaPath</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <script src="js/settings.js"></script>
+
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/lesson.css" />
+</head>
+<body>
+
+  <a class="skip-nav" href="#lesson-main">Skip to lesson content</a>
+
+  <!-- ====================================================================
+       Navigation
+       ==================================================================== -->
+  <header>
+    <nav class="nav" aria-label="Main navigation">
+      <div class="container">
+        <div class="nav__inner">
+
+          <a href="index.html" class="nav__logo" aria-label="SugamaPath home">
+            <span class="nav__logo-icon" aria-hidden="true">🌿</span>
+            Sugama<span>Path</span>
+          </a>
+
+          <button
+            class="nav__toggle"
+            aria-controls="nav-links"
+            aria-expanded="false"
+            aria-label="Toggle navigation menu"
+          >
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <rect y="4"  width="22" height="2.5" rx="1.25" fill="currentColor"/>
+              <rect y="10" width="22" height="2.5" rx="1.25" fill="currentColor"/>
+              <rect y="16" width="22" height="2.5" rx="1.25" fill="currentColor"/>
+            </svg>
+          </button>
+
+          <ul class="nav__links" id="nav-links" role="list">
+            <li><a href="index.html"     class="nav__link">Home</a></li>
+            <li><a href="reading.html"   class="nav__link">Reading</a></li>
+            <li><a href="learn.html"     class="nav__link" aria-current="page">Learn</a></li>
+            <li><a href="dashboard.html" class="nav__link">Progress</a></li>
+            <li><a href="settings.html"  class="nav__link">Settings</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ====================================================================
+       Lesson main — all content injected by lesson.js
+       ==================================================================== -->
+  <main id="lesson-main" aria-label="Lesson content">
+    <!-- lesson.js injects: lesson-header, lesson-stage, lesson-complete, lesson-actions, lesson-toast -->
+    <noscript>
+      <div style="padding: 3rem 2rem; color: var(--color-text-muted); max-width: 640px; margin: auto;">
+        <p>Please enable JavaScript to use the lesson page.</p>
+        <a href="learn.html">Back to lessons</a>
+      </div>
+    </noscript>
+  </main>
+
+  <!-- ====================================================================
+       Footer
+       ==================================================================== -->
+  <footer class="footer" aria-label="Site footer">
+    <div class="container">
+      <div class="footer__inner">
+
+        <div class="footer__brand">
+          <div class="footer__brand-name">🌿 Sugama<span>Path</span></div>
+          <p class="footer__tagline">
+            An accessible reading and language learning platform for
+            neurodivergent learners. Designed with care.
+          </p>
+        </div>
+
+        <nav class="footer__links-group" aria-label="Tools navigation">
+          <div class="footer__links-heading">Tools</div>
+          <a href="reading.html"   class="footer__link">Reading Tool</a>
+          <a href="learn.html"     class="footer__link">Learn Kannada</a>
+          <a href="practice.html"  class="footer__link">Script Practice</a>
+          <a href="dashboard.html" class="footer__link">My Progress</a>
+        </nav>
+
+        <nav class="footer__links-group" aria-label="Settings navigation">
+          <div class="footer__links-heading">Settings</div>
+          <a href="settings.html"           class="footer__link">Accessibility Settings</a>
+          <a href="dashboard.html#notebook" class="footer__link">Vocabulary Notebook</a>
+        </nav>
+
+      </div>
+
+      <div class="footer__bottom">
+        <span>© 2025 SugamaPath. Made with care for neurodivergent learners.</span>
+        <span>"Sugama" (ಸುಗಮ) means comfortable or easy in Kannada.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====================================================================
+       Scripts
+       ==================================================================== -->
+  <script>
+    const navToggle = document.querySelector('.nav__toggle');
+    const navLinks  = document.querySelector('.nav__links');
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('is-open');
+        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      navLinks.querySelectorAll('.nav__link').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('is-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+      document.addEventListener('click', e => {
+        if (!e.target.closest('.nav')) {
+          navLinks.classList.remove('is-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    /* Update page title once lesson data loads — lesson.js calls this */
+    window.setLessonTitle = function (title) {
+      document.title = `${title} — SugamaPath`;
+    };
+  </script>
+  <script src="js/audio.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/lesson.js"></script>
+
+</body>
+</html>

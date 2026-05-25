@@ -1,0 +1,102 @@
+{
+  "id": "conversation",
+  "type": "vocabulary",
+  "language": "kannada",
+  "title": "Daily Conversation",
+  "titleKannada": "ದಿನನಿತ್ಯದ ಮಾತುಕತೆ",
+  "subtitle": "Introduce yourself and get by",
+  "description": "The handful of phrases you'll repeat constantly when meeting new people — your PG owner, your auto driver, your neighbor.",
+  "estimatedMinutes": 8,
+  "items": [
+    {
+      "id": "nanna-hesaru",
+      "kannada": "ನನ್ನ ಹೆಸರು ___",
+      "roman": "nanna hesaru ___",
+      "english": "My name is ___",
+      "context": "The simplest introduction — fill in the blank with your name. Locals will immediately feel a connection when you say this in Kannada",
+      "scenario": "Introducing yourself to your PG owner, a new colleague, or anyone asking who you are",
+      "imageQuery": "introduction handshake meeting people"
+    },
+    {
+      "id": "nimma-hesaru",
+      "kannada": "ನಿಮ್ಮ ಹೆಸರು ಏನು?",
+      "roman": "nimma hesaru ēnu?",
+      "english": "What is your name? (formal)",
+      "context": "Formal way to ask someone's name — nimma is respectful, use it with elders and people you've just met",
+      "scenario": "Meeting your landlord for the first time, or asking the name of a shopkeeper you visit regularly",
+      "imageQuery": "formal meeting introduction polite"
+    },
+    {
+      "id": "inglishu-mathadaballe",
+      "kannada": "ನಾನು ಇಂಗ್ಲಿಷಿನಲ್ಲಿ ಮಾತಾಡಬಲ್ಲೆ",
+      "roman": "nānu iṃglīṣinalli māthāḍaballe",
+      "english": "I can speak English",
+      "context": "Say this when you're struggling and need to switch — most educated Bengalureans are comfortable in English and will happily switch",
+      "scenario": "When a conversation gets too complex, or you're stuck in an important situation like a government office",
+      "imageQuery": "english speaking communication language"
+    },
+    {
+      "id": "kannada-kaliyuttiddene",
+      "kannada": "ನಾನು ಕನ್ನಡ ಕಲಿಯುತ್ತಿದ್ದೇನೆ",
+      "roman": "nānu kannaḍa kaliyuttiddēne",
+      "english": "I am learning Kannada",
+      "context": "This phrase is a cheat code — locals light up when they hear it. It breaks down barriers faster than anything else you can say",
+      "scenario": "When someone is surprised you're speaking Kannada, or to warm up a conversation with anyone local",
+      "imageQuery": "learning language books study smiling"
+    },
+    {
+      "id": "nidhana-mathaadi",
+      "kannada": "ದಯವಿಟ್ಟು ನಿಧಾನವಾಗಿ ಮಾತಾಡಿ",
+      "roman": "dayaviṭṭu nidhānavāgi māthāḍi",
+      "english": "Please speak slowly",
+      "context": "Nobody speaks textbook Kannada in real life — this gives you a fighting chance to actually understand the reply",
+      "scenario": "Whenever someone responds too fast in rapid Bengaluru Kannada and you've completely lost the thread",
+      "imageQuery": "slow down communication listening"
+    },
+    {
+      "id": "artha-madikollalilla",
+      "kannada": "ನಾನು ಅರ್ಥ ಮಾಡಿಕೊಳ್ಳಲಿಲ್ಲ",
+      "roman": "nānu artha māḍikoḷḷalilla",
+      "english": "I don't understand",
+      "context": "Be honest — pretending you understood when you didn't leads to real problems, especially with addresses and prices",
+      "scenario": "When you genuinely didn't catch what was said and need them to try again or differently",
+      "imageQuery": "confused not understand puzzled"
+    },
+    {
+      "id": "matte-heli",
+      "kannada": "ಮತ್ತೆ ಹೇಳಿ",
+      "roman": "matte hēḷi",
+      "english": "Please say that again",
+      "context": "Short, simple, universally understood — matte means again, hēḷi means tell/say",
+      "scenario": "When you missed what was said — auto drivers, phone calls, or any noisy street conversation",
+      "imageQuery": "repeat say again communication"
+    },
+    {
+      "id": "nanu-inda",
+      "kannada": "ನಾನು ___ ಇಂದ",
+      "roman": "nānu ___ iṃda",
+      "english": "I am from ___",
+      "context": "Fill in your home city or state — inda means from. This always sparks a warm conversation about where you're from",
+      "scenario": "When new people ask about you — PG residents, classmates, or anyone curious about the outsider speaking Kannada",
+      "imageQuery": "hometown origin map india"
+    },
+    {
+      "id": "neevu-ellinda",
+      "kannada": "ನೀವು ಎಲ್ಲಿಂದ?",
+      "roman": "nīvu elliṃda?",
+      "english": "Where are you from?",
+      "context": "Shows interest in the other person — Kannadigas are proud of their roots and love talking about their district or native place",
+      "scenario": "Getting to know your auto driver, a shopkeeper, or any local you've started chatting with",
+      "imageQuery": "where from origin hometown conversation"
+    },
+    {
+      "id": "kutumba-hegide",
+      "kannada": "ನಿಮ್ಮ ಕುಟುಂಬ ಹೇಗಿದೆ?",
+      "roman": "nimma kuṭuṃba hēgide?",
+      "english": "How is your family?",
+      "context": "Kannadigas are family-oriented — asking about someone's family is a sign of genuine warmth and will make them feel respected",
+      "scenario": "In ongoing relationships — your regular vegetable vendor, the chai uncle near your college, or a helpful neighbour",
+      "imageQuery": "family warmth happiness india"
+    }
+  ]
+}

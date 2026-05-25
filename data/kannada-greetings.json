@@ -1,0 +1,147 @@
+{
+  "id": "greetings",
+  "type": "vocabulary",
+  "language": "kannada",
+  "title": "Greetings & First Words",
+  "titleKannada": "ನಮಸ್ಕಾರ ಮತ್ತು ಮೊದಲ ಮಾತುಗಳು",
+  "subtitle": "Break the ice with locals",
+  "description": "Hello, thank you, sorry, yes, no. The phrases that make every interaction warmer. Locals genuinely appreciate when you try.",
+  "estimatedMinutes": 8,
+  "items": [
+    {
+      "id": "namaskara",
+      "kannada": "ನಮಸ್ಕಾರ",
+      "roman": "namaskāra",
+      "english": "Hello / Greetings",
+      "context": "Universal greeting that works any time of day — more respectful than a casual hi, used by everyone from street vendors to office colleagues",
+      "scenario": "Opening any conversation, from meeting your landlord to greeting your PG owner in the morning",
+      "imageQuery": "namaste greeting india hands"
+    },
+    {
+      "id": "shubha-beligere",
+      "kannada": "ಶುಭ ಬೆಳಿಗ್ಗೆ",
+      "roman": "śubha beḷigge",
+      "english": "Good morning",
+      "context": "Use this until around noon — literally 'auspicious morning', a warm and pleasant way to start the day",
+      "scenario": "Greeting your neighbor, office receptionist, or the canteen staff in the morning",
+      "imageQuery": "morning sunrise warm light india"
+    },
+    {
+      "id": "shubha-sanje",
+      "kannada": "ಶುಭ ಸಂಜೆ",
+      "roman": "śubha sanje",
+      "english": "Good evening",
+      "context": "Said from late afternoon onwards — sanje means evening, the golden hour when Bengaluru comes alive",
+      "scenario": "Walking back to your PG, meeting someone at a bus stop, or greeting someone at evening tea",
+      "imageQuery": "evening sunset golden hour india"
+    },
+    {
+      "id": "hege-iddiri",
+      "kannada": "ನೀವು ಹೇಗಿದ್ದೀರಿ?",
+      "roman": "nīvu hēgiddīri?",
+      "english": "How are you? (formal)",
+      "context": "The formal version — use nīvu (you, formal) with elders, landlords, shopkeepers, and anyone older than you",
+      "scenario": "Asking your PG owner, a professor, or an older colleague how they're doing",
+      "imageQuery": "formal polite meeting india"
+    },
+    {
+      "id": "hege-iddiya",
+      "kannada": "ನೀನು ಹೇಗಿದ್ದೀಯ?",
+      "roman": "nīnu hēgiddīya?",
+      "english": "How are you? (informal)",
+      "context": "Casual version for friends and peers — nīnu is the friendly you, use it with classmates and flatmates",
+      "scenario": "Texting a Kannada-speaking friend or asking your hostel roommate how they're doing",
+      "imageQuery": "friends casual conversation laughing"
+    },
+    {
+      "id": "chennagiddene",
+      "kannada": "ನಾನು ಚೆನ್ನಾಗಿದ್ದೇನೆ",
+      "roman": "nānu chennāgiddēne",
+      "english": "I am fine",
+      "context": "The standard reply when asked how you're doing — chenna means beautiful or good, and this is genuinely a warm phrase",
+      "scenario": "Responding to anyone who asks nīvu hēgiddīri? or nīnu hēgiddīya?",
+      "imageQuery": "happy person okay thumbs up"
+    },
+    {
+      "id": "dhanyavadagalu",
+      "kannada": "ಧನ್ಯವಾದಗಳು",
+      "roman": "dhanyavādagaḷu",
+      "english": "Thank you",
+      "context": "The formal, complete thank-you — dhanya means blessed, vāda means expression. Use this in professional or formal settings",
+      "scenario": "Thanking a shopkeeper who helped you find something, or expressing gratitude to a colleague",
+      "imageQuery": "gratitude thank you gesture india"
+    },
+    {
+      "id": "kshamisi",
+      "kannada": "ಕ್ಷಮಿಸಿ",
+      "roman": "kṣamisi",
+      "english": "Excuse me / Sorry",
+      "context": "Works both as an apology and to politely get someone's attention — the softest, most useful phrase in your kit",
+      "scenario": "Bumping into someone in a crowd, interrupting to ask a question, or getting an auto driver's attention",
+      "imageQuery": "apology excuse me sorry gesture"
+    },
+    {
+      "id": "enu-beda",
+      "kannada": "ಏನೂ ಬೇಡ",
+      "roman": "ēnu bēḍa",
+      "english": "No problem / You're welcome",
+      "context": "Literally 'nothing needed' — the relaxed, friendly response when someone thanks you or apologises",
+      "scenario": "When a colleague or neighbour thanks you for something small, wave it off with this",
+      "imageQuery": "relaxed no problem casual gesture"
+    },
+    {
+      "id": "hoguttene",
+      "kannada": "ಹೋಗುತ್ತೇನೆ",
+      "roman": "hōguttēne",
+      "english": "I am leaving / Goodbye",
+      "context": "A gentle, natural way to say you're heading out — less abrupt than just walking away",
+      "scenario": "Leaving the office, wrapping up a conversation with your landlord, or heading out from a shop",
+      "imageQuery": "leaving goodbye waving farewell"
+    },
+    {
+      "id": "matte-sigona",
+      "kannada": "ಮತ್ತೆ ಸಿಗೋಣ",
+      "roman": "matte sigōṇa",
+      "english": "See you again",
+      "context": "A warm parting phrase — matte means again, sigōṇa means let us meet. Locals will smile when they hear this",
+      "scenario": "Parting with someone you expect to see again — your dosa-wala, a friendly neighbour, or a new acquaintance",
+      "imageQuery": "friends parting see you again"
+    },
+    {
+      "id": "dayavittu",
+      "kannada": "ದಯವಿಟ್ಟು",
+      "roman": "dayaviṭṭu",
+      "english": "Please",
+      "context": "Add this at the start of any request to soften it immediately — without it, requests can sound abrupt",
+      "scenario": "Before asking for anything: dayaviṭṭu nīru koḍi (please give me water), dayaviṭṭu illi nilisi (please stop here)",
+      "imageQuery": "please polite request hands folded"
+    },
+    {
+      "id": "houdu",
+      "kannada": "ಹೌದು",
+      "roman": "haudu",
+      "english": "Yes",
+      "context": "The standard yes — also used to confirm what someone said, like 'right' or 'that's correct'",
+      "scenario": "Confirming an address with your auto driver, agreeing to a price, or answering any yes/no question",
+      "imageQuery": "yes agreement head nod positive"
+    },
+    {
+      "id": "illa",
+      "kannada": "ಇಲ್ಲ",
+      "roman": "illa",
+      "english": "No",
+      "context": "Not just no — illa also means 'there isn't any' or 'it doesn't exist'. One of the most versatile words you'll use",
+      "scenario": "Refusing when an auto driver tries to overcharge, or when a shop doesn't have what you need",
+      "imageQuery": "no disagreement head shake decline"
+    },
+    {
+      "id": "sari",
+      "kannada": "ಸರಿ",
+      "roman": "sari",
+      "english": "Okay / Alright",
+      "context": "The everyday go-to for agreement — not as strong as yes, more like 'alright then' or 'got it'",
+      "scenario": "Agreeing to plans, wrapping up instructions from your landlord, or confirming you understand something",
+      "imageQuery": "okay agreement casual thumbs up"
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "id": "getting-around",
+  "type": "vocabulary",
+  "language": "kannada",
+  "title": "Getting Around Bengaluru",
+  "titleKannada": "ಬೆಂಗಳೂರಿನಲ್ಲಿ ಓಡಾಟ",
+  "subtitle": "Autos, directions, and surviving the chaos",
+  "description": "Survive the auto rickshaw negotiation, ask for directions in Bengaluru's chaos, and find your way back home.",
+  "estimatedMinutes": 12,
+  "items": [
+    {
+      "id": "auto-sikkutta",
+      "kannada": "ಆಟೋ ಸಿಕ್ಕುತ್ತಾ?",
+      "roman": "āṭō sikkuttā?",
+      "english": "Can I get an auto rickshaw here?",
+      "context": "Literally 'will I get an auto?' — a quick way to check availability rather than standing around waving fruitlessly",
+      "scenario": "Asking a passer-by or shopkeeper whether autos typically stop in this area",
+      "imageQuery": "auto rickshaw street bengaluru india"
+    },
+    {
+      "id": "meter-haki",
+      "kannada": "ಮೀಟರ್ ಹಾಕಿ",
+      "roman": "mīṭar hāki",
+      "english": "Put on the meter",
+      "context": "The most important phrase in this entire course — say this the moment you sit down. Without it, you'll be quoted whatever the driver feels like charging",
+      "scenario": "Every single time you get into an auto rickshaw in Bengaluru. Every. Single. Time.",
+      "imageQuery": "auto meter rickshaw fare india"
+    },
+    {
+      "id": "estu-aguttee",
+      "kannada": "ಎಷ್ಟು ಆಗುತ್ತೆ?",
+      "roman": "eṣṭu āguttē?",
+      "english": "How much will it cost?",
+      "context": "For when you're negotiating a fixed-price ride — ask this upfront and confirm before you get in",
+      "scenario": "When an auto refuses the meter and you need to negotiate a flat fare, or asking a bike taxi price",
+      "imageQuery": "price negotiation payment rupee"
+    },
+    {
+      "id": "hogabeku",
+      "kannada": "___ ಗೆ ಹೋಗಬೇಕು",
+      "roman": "___ ge hōgabēku",
+      "english": "I need to go to ___",
+      "context": "Fill in the destination — ge marks direction in Kannada, hōgabēku means 'need to go'. Works with any neighbourhood, landmark, or metro station name",
+      "scenario": "Telling an auto driver or asking anyone for directions — Koramangalage hōgabēku, Whitefieldge hōgabēku",
+      "imageQuery": "destination map navigation india"
+    },
+    {
+      "id": "estu-dura",
+      "kannada": "ಇದಕ್ಕೆ ಎಷ್ಟು ದೂರ?",
+      "roman": "idakke eṣṭu dūra?",
+      "english": "How far is it?",
+      "context": "Bengalureans measure distance in time ('20 minutes') not kilometers — the answer will tell you whether to walk, auto, or metro",
+      "scenario": "Before deciding whether to walk to a place or take transport — especially useful in new neighbourhoods",
+      "imageQuery": "distance road walking city"
+    },
+    {
+      "id": "estu-samaya",
+      "kannada": "ಇದಕ್ಕೆ ಎಷ್ಟು ಸಮಯ ತಗುತ್ತೆ?",
+      "roman": "idakke eṣṭu samaya tagutte?",
+      "english": "How much time will it take?",
+      "context": "Time is more useful than distance in Bengaluru traffic — 5 km can take 5 minutes or 50 minutes depending on the hour",
+      "scenario": "Planning whether to leave now or later, or deciding if it's worth the auto fare versus waiting for a bus",
+      "imageQuery": "time clock traffic jam bengaluru"
+    },
+    {
+      "id": "balakke-tirugi",
+      "kannada": "ಬಲಕ್ಕೆ ತಿರುಗಿ",
+      "roman": "balakke tirugi",
+      "english": "Turn right",
+      "context": "Bala means right side — pair with landmarks since Bengaluru street names are rarely posted or known",
+      "scenario": "Giving directions to an auto driver who's lost, or following spoken directions from a helpful local",
+      "imageQuery": "turn right direction arrow road"
+    },
+    {
+      "id": "edakke-tirugi",
+      "kannada": "ಎಡಕ್ಕೆ ತಿರುಗಿ",
+      "roman": "eḍakke tirugi",
+      "english": "Turn left",
+      "context": "Eḍa means left side — combine with right, straight, and stop here to guide any driver to your destination",
+      "scenario": "Directing your auto driver through a lane your GPS doesn't know about",
+      "imageQuery": "turn left direction arrow road"
+    },
+    {
+      "id": "nera-hogi",
+      "kannada": "ನೇರ ಹೋಗಿ",
+      "roman": "nēra hōgi",
+      "english": "Go straight",
+      "context": "Nēra means straight or directly — use it between turns when giving step-by-step directions",
+      "scenario": "Guiding a driver who missed the turn and needs to go straight before the next one",
+      "imageQuery": "straight ahead road driving direction"
+    },
+    {
+      "id": "illi-nilisi",
+      "kannada": "ಇಲ್ಲಿ ನಿಲಿಸಿ",
+      "roman": "illi nilisi",
+      "english": "Stop here",
+      "context": "Illi means here, nilisi means stop — say it clearly and with enough warning so the driver can actually brake",
+      "scenario": "Whenever you've reached your destination in an auto or cab — don't wait for the driver to guess",
+      "imageQuery": "stop here hand signal road"
+    },
+    {
+      "id": "dari-torisi",
+      "kannada": "ದಯವಿಟ್ಟು ದಾರಿ ತೋರಿಸಿ",
+      "roman": "dayaviṭṭu dāri tōrisi",
+      "english": "Please show me the way",
+      "context": "Dāri means path or way, tōrisi means show — a polite and humble way to ask for directions from a stranger",
+      "scenario": "When you're completely lost and need a local to physically point you in the right direction",
+      "imageQuery": "directions asking help lost street"
+    },
+    {
+      "id": "bus-stand-elli",
+      "kannada": "ಬಸ್ ಸ್ಟಾಂಡ್ ಎಲ್ಲಿ?",
+      "roman": "bas sṭāṃḍ elli?",
+      "english": "Where is the bus stand?",
+      "context": "BMTC buses are the cheapest way around the city once you know the routes — elli means where",
+      "scenario": "Asking for the nearest bus stop, especially useful when you've just arrived in an unfamiliar area",
+      "imageQuery": "bus stand stop public transport india"
+    },
+    {
+      "id": "metro-station-elli",
+      "kannada": "ಮೆಟ್ರೋ ಸ್ಟೇಷನ್ ಎಲ್ಲಿ?",
+      "roman": "meṭrō sṭēṣan elli?",
+      "english": "Where is the metro station?",
+      "context": "The Namma Metro is your best friend for avoiding Bengaluru traffic — learn the Purple and Green line stations near you",
+      "scenario": "When you're above ground and need to find the nearest Namma Metro entry point",
+      "imageQuery": "metro station bengaluru namma metro"
+    },
+    {
+      "id": "hattira-ide",
+      "kannada": "ಹತ್ತಿರ ಇದೆ",
+      "roman": "hattira ide",
+      "english": "It's nearby",
+      "context": "Hattira means near or close — when someone says this, always ask eṣṭu dūra? because 'nearby' in Bengaluru can still be a 20-minute ride",
+      "scenario": "When a local reassures you that your destination is close — prepare to verify",
+      "imageQuery": "nearby close location map pin"
+    },
+    {
+      "id": "tumba-dura-ide",
+      "kannada": "ತುಂಬಾ ದೂರ ಇದೆ",
+      "roman": "tuṃbā dūra ide",
+      "english": "It's very far",
+      "context": "Tumba means very, dūra means far — if a local says this, believe them and plan accordingly. Take the metro if possible",
+      "scenario": "When you're considering whether to walk somewhere and want a local's honest assessment",
+      "imageQuery": "far away long road distance horizon"
+    }
+  ]
+}
